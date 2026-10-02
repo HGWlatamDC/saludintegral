@@ -3,1022 +3,1572 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HGW Colombia | Salud Real, Bienestar y Transformación</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>HGW Latam by DC pro | Bienestar Integral, Prevención y Propósito</title>
+    <!-- Fuentes Google: Outfit (Títulos) e Inter (Cuerpo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
     
     <style>
+        /* ----- 1. PALETA DE COLORES (DESIGN TOKENS) ----- */
         :root {
-            --primary-green: #1b4d3e;
-            --secondary-green: #2d7a60;
-            --accent-gold: #d4af37;
-            --accent-green: #25d366;
-            --dark-blue: #0f172a;
-            --slate-gray: #1e293b;
-            --light-bg: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #334155;
-            --text-dark: #0f172a;
-            --border-color: #e2e8f0;
+            --bg-main: #FFFDF9;           /* Blanco cálido / Marfil */
+            --bg-secondary: #FFEDD5;      /* Melocotón pastel suave */
+            --glow-color: #FEF08A;        /* Amarillo cítrico cálido */
+            
+            --text-title: #18181B;        /* Gris oscuro casi negro */
+            --text-body: #52525B;         /* Gris medio legible */
+            --border-subtle: #FDE68A;     /* Tono amarillo/melocotón tenue */
+            
+            --cta-primary: #F43F5E;       /* Coral enérgico */
+            --cta-hover: #E11D48;         /* Coral profundo */
+            
+            --badge-bg: #84CC16;          /* Verde lima vibrante */
+            --badge-text: #FFFFFF;
+            
+            --accent-wa: #25D366;         /* WhatsApp verde oficial */
+            --accent-wa-hover: #1FBE5B;
+            
+            --radius-pill: 99px;
+            --radius-card: 20px;
+            --radius-sm: 12px;
+            
+            --shadow-card: 0 10px 25px -5px rgba(251, 146, 60, 0.08);
+            --shadow-hover: 0 18px 35px -5px rgba(244, 63, 94, 0.15);
+            --shadow-cta: 0 4px 14px rgba(244, 63, 94, 0.3);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
         }
 
+        /* ----- 2. TIPOGRAFÍA Y ESTILOS GENERALES ----- */
         body {
-            background-color: var(--light-bg);
-            color: var(--text-main);
+            background-color: var(--bg-main);
+            color: var(--text-body);
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4 {
-            color: var(--text-dark);
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-title);
             font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.25;
         }
 
-        /* --- NAVBAR --- */
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-main);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-subtle);
+            border-radius: 5px;
+        }
+
+        /* ----- 3. NAVBAR SUPERIOR & MENÚ MÓVIL ----- */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 253, 249, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 5%;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            padding: 16px 6%;
+            box-shadow: 0 4px 20px rgba(251, 146, 60, 0.05);
+            border-bottom: 1px solid var(--border-subtle);
             z-index: 1000;
         }
 
         .logo {
-            font-size: 1.6rem;
+            font-size: 1.35rem;
             font-weight: 800;
-            color: var(--primary-green);
+            color: var(--text-title);
             text-decoration: none;
+            letter-spacing: -0.02em;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 6px;
         }
 
-        .logo i {
-            color: var(--accent-gold);
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
         .nav-links {
             display: flex;
-            gap: 25px;
+            gap: 20px;
             list-style: none;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-main);
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: color 0.3s;
+            color: var(--text-title);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--cta-primary);
+            transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: var(--secondary-green);
+            color: var(--cta-primary);
         }
 
-        .btn-ws-nav {
-            background-color: var(--accent-green);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn-wa-header {
+            background: var(--accent-wa);
+            color: #ffffff;
+            padding: 10px 22px;
+            border-radius: var(--radius-pill);
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-            transition: transform 0.2s, background-color 0.2s;
+            gap: 6px;
+            white-space: nowrap;
         }
 
-        .btn-ws-nav:hover {
+        .btn-wa-header:hover {
+            background: var(--accent-wa-hover);
             transform: translateY(-2px);
-            background-color: #1eb956;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
         }
 
-        /* --- HERO SLIDER (SECCIÓN 1) --- */
+        /* Botón Hamburguesa Móvil */
+        .hamburger-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 28px;
+            height: 20px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 0;
+        }
+
+        .hamburger-btn span {
+            width: 100%;
+            height: 3px;
+            background-color: var(--text-title);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Animación del menú hamburguesa activado */
+        .hamburger-btn.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .hamburger-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger-btn.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* ----- 4. HERO SLIDER CON EFECTO GLOW GRADIENT ----- */
         .hero-slider {
+            margin-top: 73px;
             position: relative;
-            margin-top: 70px;
-            height: 85vh;
-            min-height: 550px;
             overflow: hidden;
-            background-color: var(--dark-blue);
+            width: 100%;
+            height: 520px;
+            background: var(--text-title);
+        }
+
+        .hero-slider::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(254, 240, 138, 0.45) 0%, rgba(255, 237, 213, 0.25) 50%, transparent 70%);
+            filter: blur(60px);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .slider-track {
+            display: flex;
+            width: 200%;
+            height: 100%;
+            animation: slideAnimation 14s infinite ease-in-out;
+            position: relative;
+            z-index: 1;
         }
 
         .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
+            width: 50%;
             height: 100%;
-            opacity: 0;
-            transition: opacity 0.8s ease-in-out;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            background-size: cover;
-            background-position: center;
-            padding: 0 5%;
-        }
-
-        .slide.active {
-            opacity: 1;
-        }
-
-        .slide-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(15,23,42,0.92) 0%, rgba(15,23,42,0.65) 60%, rgba(15,23,42,0.3) 100%);
-        }
-
-        .slide-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            color: white;
-        }
-
-        .slide-content h1 {
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
             color: #ffffff;
-            font-size: 3rem;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            font-family: 'Playfair Display', serif;
+            position: relative;
         }
 
-        .slide-content p {
-            font-size: 1.25rem;
+        .slide-1 {
+            background: linear-gradient(135deg, rgba(244, 63, 94, 0.85), rgba(24, 24, 27, 0.92)), url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1600&q=80') center/cover;
+        }
+
+        .slide-2 {
+            background: linear-gradient(135deg, rgba(24, 24, 27, 0.92), rgba(254, 240, 138, 0.3)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80') center/cover;
+        }
+
+        .slide h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 18px;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .slide p {
+            font-size: 1.15rem;
+            max-width: 720px;
             margin-bottom: 30px;
             opacity: 0.95;
-            font-weight: 300;
-            max-width: 680px;
+            line-height: 1.7;
         }
 
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 10;
-            font-size: 1.2rem;
-            backdrop-filter: blur(5px);
-            transition: background 0.3s;
-        }
-
-        .slider-btn:hover {
-            background: rgba(255, 255, 255, 0.5);
-        }
-
-        .slider-btn.prev { left: 20px; }
-        .slider-btn.next { right: 20px; }
-
-        /* --- BOTONES GENERALES --- */
-        .btn-gold {
-            background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa7c11 100%);
-            color: #1a1a1a;
+        .btn-slide-cta {
+            background: var(--cta-primary);
+            color: #ffffff;
             padding: 14px 32px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 700;
-            display: inline-block;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .btn-gold:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
-        }
-
-        .btn-green {
-            background-color: var(--accent-green);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
+            border-radius: var(--radius-pill);
             text-decoration: none;
             font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: background-color 0.2s, transform 0.2s;
-            width: 100%;
-            text-align: center;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-cta);
+            border: none;
         }
 
-        .btn-green:hover {
-            background-color: #1eb956;
-            transform: translateY(-2px);
+        .btn-slide-cta:hover {
+            background: var(--cta-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 22px rgba(225, 29, 72, 0.4);
         }
 
-        /* --- BLOQUES DE CULTURA Y CONFIANZA (SECCIÓN 2) --- */
-        .pillars-container {
-            padding: 0 5%;
-            margin-top: -50px;
+        @keyframes slideAnimation {
+            0%, 45% { transform: translateX(0); }
+            50%, 95% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+
+        /* ----- 5. TRES PILARES PRINCIPALES ----- */
+        .pillars-wrapper {
+            max-width: 1200px;
+            margin: -50px auto 20px auto;
+            padding: 0 20px;
             position: relative;
-            z-index: 20;
+            z-index: 10;
         }
 
         .pillars-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
         }
 
         .pillar-card {
-            background: white;
-            padding: 35px 25px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            text-align: center;
-            border-bottom: 4px solid var(--secondary-green);
-            transition: transform 0.3s;
+            background: #ffffff;
+            padding: 32px;
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-subtle);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .pillar-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .pillar-icon {
-            font-size: 2.5rem;
-            color: var(--secondary-green);
-            margin-bottom: 15px;
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
         }
 
         .pillar-card h3 {
-            font-size: 1.25rem;
+            color: var(--text-title);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pillar-card ul { list-style: none; }
+        .pillar-card ul li {
+            padding-left: 22px;
+            position: relative;
             margin-bottom: 10px;
-            color: var(--primary-green);
+            font-size: 0.92rem;
+            color: var(--text-body);
+            line-height: 1.5;
+        }
+        .pillar-card ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--badge-bg);
+            font-weight: bold;
         }
 
-        .pillar-card p {
-            font-size: 0.95rem;
-            color: #64748b;
-        }
-
-        /* --- SECCIÓN BASE STYLES --- */
+        /* ----- 6. SECCIONES Y PATRÓN DE COLOR ----- */
         .section-block {
-            padding: 80px 5%;
+            padding: 85px 6%;
+            border-bottom: 1px solid var(--border-subtle);
+            position: relative;
         }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .glow-bg-section::after {
+            content: '';
+            position: absolute;
+            top: 30%;
+            right: 10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(254, 240, 138, 0.5) 0%, rgba(255, 237, 213, 0.3) 50%, transparent 70%);
+            filter: blur(60px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-white { background-color: var(--bg-main); }
+        .bg-green-soft { background-color: var(--bg-secondary); }
+        .bg-slate-soft { background-color: #FFFDF9; }
+        .bg-yellow-soft { background-color: #FEF08A; }
+        .bg-indigo-soft { background-color: var(--bg-secondary); }
+        .bg-emerald-soft { background-color: #FFF8EE; }
 
         .section-header {
             text-align: center;
-            max-width: 800px;
-            margin: 0 auto 50px auto;
+            max-width: 780px;
+            margin: 0 auto 55px auto;
         }
 
-        .section-header h2 {
-            font-size: 2.3rem;
-            color: var(--primary-green);
-            margin-bottom: 12px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-header h2::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: var(--accent-gold);
-            margin: 10px auto 0 auto;
-            border-radius: 2px;
-        }
-
-        .section-header p {
-            font-size: 1.1rem;
-            color: #64748b;
-        }
-
-        /* --- PRODUCTOS MÁS SOLICITADOS (SECCIÓN 3) --- */
-        .bg-products-featured {
-            background-color: #f1f5f9;
-        }
-
-        .grid-6-products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .featured-card {
-            background: white;
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            border: 1px solid var(--border-color);
-            transition: box-shadow 0.3s, transform 0.3s;
-        }
-
-        .featured-card:hover {
-            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-            transform: translateY(-4px);
-        }
-
-        .card-hook {
-            font-size: 1.15rem;
+        .section-tag {
+            background: var(--bg-secondary);
+            color: var(--text-title);
+            font-family: 'Outfit', sans-serif;
             font-weight: 700;
-            color: var(--primary-green);
-            margin-bottom: 12px;
-            line-height: 1.35;
+            font-size: 0.78rem;
+            padding: 6px 16px;
+            border-radius: var(--radius-pill);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            display: inline-block;
+            margin-bottom: 14px;
+            border: 1px solid var(--border-subtle);
         }
 
-        .card-title {
-            font-size: 1.4rem;
+        .section-title {
+            font-size: 2.3rem;
             font-weight: 800;
-            color: var(--text-dark);
-            margin-bottom: 15px;
-            border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 8px;
+            color: var(--text-title);
+            margin-bottom: 12px;
         }
 
-        .card-text {
-            font-size: 0.95rem;
-            color: #475569;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .badges-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 25px;
-        }
-
-        .badge-item {
-            background-color: #e2e8f0;
-            color: var(--slate-gray);
-            font-size: 0.8rem;
-            font-weight: 600;
-            padding: 5px 12px;
-            border-radius: 20px;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        /* --- ENFOQUE CLÍNICO Y PREVENTIVO --- */
-        .bg-clinical {
-            background-color: #ffffff;
-        }
-
-        .clinical-grid {
+        /* ----- 7. TARJETAS Y PRODUCTOS (PRODUCT CARDS) ----- */
+        .products-grid-4, .science-grid, .categories-5-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .clinical-box {
-            background: #f8fafc;
-            padding: 30px;
-            border-radius: 12px;
-            border-left: 5px solid var(--secondary-green);
-        }
-
-        .clinical-box h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: var(--primary-green);
-        }
-
-        /* --- PRUEBA SOCIAL / CAROUSEL DE TESTIMONIOS --- */
-        .bg-social {
-            background-color: #1e293b;
-            color: white;
-        }
-
-        .bg-social .section-header h2 {
-            color: white;
-        }
-
-        .bg-social .section-header p {
-            color: #94a3b8;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 25px;
         }
 
-        .testimonial-card {
-            background: #0f172a;
-            padding: 25px;
-            border-radius: 12px;
-            border: 1px solid #334155;
-        }
-
-        .testimonial-card .stars {
-            color: var(--accent-gold);
-            margin-bottom: 10px;
-        }
-
-        .testimonial-card p {
-            font-style: italic;
-            color: #cbd5e1;
-            margin-bottom: 15px;
-        }
-
-        .testimonial-user {
-            font-weight: 600;
-            color: white;
-        }
-
-        /* --- COMBOS DE CONSUMO INTELIGENTE --- */
-        .bg-combos {
-            background-color: #f8fafc;
-        }
-
-        .combos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .combo-card {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
-            border: 2px solid #e2e8f0;
+        .product-card, .science-card, .category-item-card {
+            background: #FFFFFF;
+            border-radius: var(--radius-card);
+            padding: 24px;
+            border: 1px solid var(--border-subtle);
+            box-shadow: var(--shadow-card);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transition: all 0.3s ease;
         }
 
-        .combo-header {
-            background: var(--primary-green);
-            color: white;
-            padding: 20px;
+        .product-card:hover, .science-card:hover, .category-item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-color: #FBBF24;
+        }
+
+        .product-img-box {
+            height: 190px;
+            background: #FFFDF9;
+            border-radius: var(--radius-sm);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-body);
+            font-size: 0.85rem;
+            border: 1px dashed var(--border-subtle);
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.06));
+        }
+
+        .product-badge {
+            align-self: flex-start;
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: var(--radius-pill);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-card h4, .science-card-body h3, .category-item-card h4 {
+            font-size: 1.15rem;
+            color: var(--text-title);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .product-card p, .science-card-body p {
+            font-size: 0.9rem;
+            color: var(--text-body);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .btn-buy {
+            background: var(--cta-primary);
+            color: #FFFFFF;
             text-align: center;
+            padding: 14px 28px;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-cta);
+            display: block;
         }
 
-        .combo-body {
-            padding: 25px;
+        .btn-buy:hover {
+            background: var(--cta-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(225, 29, 72, 0.4);
         }
 
-        .combo-price {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--secondary-green);
-            margin: 15px 0;
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-title);
             text-align: center;
+            padding: 14px 28px;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid var(--border-subtle);
+            transition: all 0.3s ease;
+            display: inline-block;
         }
 
-        /* --- CATEGORÍAS PRINCIPALES --- */
-        .bg-categories {
-            background-color: #ffffff;
+        .btn-secondary:hover {
+            background: #FDE68A;
+            color: var(--text-title);
         }
 
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
+        /* ----- 8. TRATAMIENTO DE CIENCIA Y CATEGORÍAS ----- */
+        .science-card {
+            padding: 0;
+            overflow: hidden;
         }
 
-        .category-card {
-            background: #f1f5f9;
-            padding: 30px 20px;
-            border-radius: 12px;
+        .img-placeholder {
+            width: 100%;
+            height: 210px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.06));
+        }
+
+        .img-overlay-science {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px 20px;
+            background: linear-gradient(to top, rgba(24, 24, 27, 0.85), transparent);
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .science-card-body {
+            padding: 24px;
+        }
+
+        .category-item-card {
             text-align: center;
-            transition: background 0.3s, transform 0.3s;
+            text-decoration: none;
+            align-items: center;
         }
 
-        .category-card:hover {
-            background: var(--primary-green);
-            color: white;
-            transform: translateY(-50%);
-        }
-
-        .category-card:hover h3, .category-card:hover i {
-            color: white;
-        }
-
-        .category-card i {
-            font-size: 2.5rem;
-            color: var(--primary-green);
+        .cat-icon-wrapper {
+            width: 64px;
+            height: 64px;
+            background: var(--bg-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
             margin-bottom: 15px;
+            transition: transform 0.3s;
         }
 
-        /* --- SECCIÓN OPORTUNIDAD DE NEGOCIO --- */
-        .bg-business {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
-            padding: 90px 5%;
+        .category-item-card:hover .cat-icon-wrapper {
+            transform: scale(1.1);
         }
 
-        .bg-business h2 {
-            color: var(--accent-gold);
-        }
-
-        .business-grid {
+        /* ----- 9. HISTORIAS Y VIDEOS ----- */
+        .video-grid-3 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            margin-top: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        .business-card {
-            background: rgba(255, 255, 255, 0.05);
+        .video-card-vertical {
+            background: #18181B;
+            border-radius: var(--radius-card);
+            aspect-ratio: 9 / 16;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            border: 2px solid var(--border-subtle);
+            box-shadow: var(--shadow-card);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .video-card-vertical:hover {
+            transform: translateY(-4px);
+            border-color: var(--cta-primary);
+        }
+
+        .video-overlay-details {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(24, 24, 27, 0.2), rgba(24, 24, 27, 0.85));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
             padding: 30px;
-            border-radius: 12px;
-            border-left: 4px solid var(--accent-gold);
+            text-align: center;
         }
 
-        /* --- MODAL POPUP DE CAPTURA --- */
+        .play-btn {
+            width: 54px;
+            height: 54px;
+            background: var(--cta-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow-cta);
+            transition: transform 0.3s;
+        }
+
+        .video-card-vertical:hover .play-btn {
+            transform: scale(1.15);
+            background: var(--cta-hover);
+        }
+
+        /* ----- 10. OPORTUNIDAD DE NEGOCIO Y CIERRE ----- */
+        .business-wrapper {
+            background: linear-gradient(135deg, #18181B 0%, #27272A 100%);
+            color: #ffffff;
+            border-radius: 32px;
+            padding: 70px 50px;
+            box-shadow: 0 25px 50px -12px rgba(24, 24, 27, 0.25);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .business-header h2 {
+            font-size: 2.4rem;
+            color: #FEF08A;
+            margin-bottom: 18px;
+        }
+
+        .business-header p {
+            font-size: 1.1rem;
+            color: #A1A1AA;
+            line-height: 1.7;
+            margin-bottom: 50px;
+        }
+
+        .purpose-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-bottom: 45px;
+        }
+
+        .purpose-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(253, 230, 138, 0.2);
+            padding: 35px 30px;
+            border-radius: var(--radius-card);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .purpose-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--cta-primary);
+            transform: translateY(-4px);
+        }
+
+        .purpose-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 18px;
+            display: inline-block;
+        }
+
+        .purpose-card h4 {
+            font-size: 1.25rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .purpose-card p {
+            font-size: 0.92rem;
+            color: #A1A1AA;
+        }
+
+        .cta-business-box {
+            text-align: center;
+            background: rgba(254, 240, 138, 0.1);
+            border: 1.5px solid var(--border-subtle);
+            padding: 40px;
+            border-radius: var(--radius-card);
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .btn-gold {
+            background: var(--cta-primary);
+            color: #FFFFFF;
+            padding: 15px 36px;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-block;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-cta);
+        }
+
+        .btn-gold:hover {
+            background: var(--cta-hover);
+            transform: scale(1.03);
+        }
+
+        .closing-wrapper {
+            background: linear-gradient(135deg, #FFEDD5 0%, #FEF08A 100%);
+            color: var(--text-title);
+            border-radius: 32px;
+            padding: 60px 40px;
+            text-align: center;
+            border: 1px solid var(--border-subtle);
+            box-shadow: var(--shadow-card);
+        }
+
+        .closing-title {
+            font-size: 2.1rem;
+            margin-bottom: 18px;
+        }
+
+        .closing-quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            max-width: 820px;
+            margin: 0 auto 40px auto;
+            color: var(--text-body);
+            line-height: 1.8;
+        }
+
+        .pillars-3-health {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .health-card {
+            background: #FFFFFF;
+            padding: 30px 25px;
+            border-radius: var(--radius-card);
+            border: 1px solid var(--border-subtle);
+            box-shadow: var(--shadow-card);
+        }
+
+        .health-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--text-title);
+        }
+
+        .health-card p {
+            font-size: 0.92rem;
+            color: var(--text-body);
+        }
+
+        /* ----- 11. POP-UP EXIT INTENT ----- */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.7);
+            background: rgba(24, 24, 27, 0.8);
+            backdrop-filter: blur(8px);
             display: none;
             justify-content: center;
             align-items: center;
-            z-index: 2000;
+            z-index: 2500;
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
-        .modal-card {
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
-            max-width: 500px;
+        .modal-box {
+            background: #FFFFFF;
+            padding: 40px 30px;
+            border-radius: var(--radius-card);
+            max-width: 460px;
             width: 90%;
-            position: relative;
             text-align: center;
+            position: relative;
+            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.3);
+            border: 2px solid var(--border-subtle);
+            transform: scale(0.85);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .close-modal {
+        .modal-close {
             position: absolute;
             top: 15px;
             right: 20px;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
-            color: #64748b;
+            color: var(--text-body);
         }
 
-        .form-input {
-            width: 100%;
-            padding: 12px 15px;
-            margin: 10px 0;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            font-size: 1rem;
+        .modal-box h3 {
+            font-size: 1.5rem;
+            color: var(--text-title);
+            margin-bottom: 8px;
         }
 
-        /* --- FOOTER --- */
-        footer {
-            background-color: #0b0f19;
-            color: #94a3b8;
-            padding: 40px 5% 20px 5%;
-            text-align: center;
-            border-top: 1px solid #1e293b;
+        .modal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            text-align: left;
+            margin-top: 20px;
         }
 
-        footer a {
-            color: var(--accent-gold);
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .form-group label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-title);
+        }
+
+        .form-group input {
+            padding: 12px 14px;
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            outline: none;
+            background: var(--bg-main);
+        }
+
+        .form-group input:focus {
+            border-color: var(--cta-primary);
+        }
+
+        .btn-gift {
+            background: var(--cta-primary);
+            color: #FFFFFF;
+            padding: 14px 30px;
+            border-radius: var(--radius-pill);
             text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 10px;
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            box-shadow: var(--shadow-cta);
+            transition: background 0.3s, transform 0.2s;
         }
 
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .slide-content h1 { font-size: 2rem; }
-            .slide-content p { font-size: 1rem; }
-            .hero-slider { height: 75vh; }
+        .btn-gift:hover {
+            background: var(--cta-hover);
+        }
+
+        .form-success-msg {
+            display: none;
+            color: var(--badge-bg);
+            font-weight: 600;
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+
+        /* ----- 12. CONTROLES FLOTANTES ----- */
+        .floating-controls {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1500;
+            align-items: flex-end;
+        }
+
+        .btn-float-top {
+            width: 46px;
+            height: 46px;
+            background: var(--text-title);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: all 0.3s;
+        }
+
+        .btn-float-top:hover {
+            background: var(--cta-primary);
+            transform: translateY(-3px);
+        }
+
+        .btn-float-wa {
+            background: var(--accent-wa);
+            color: white;
+            padding: 12px 24px;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-float-wa:hover {
+            background: var(--accent-wa-hover);
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: var(--text-title);
+            color: #A1A1AA;
+            text-align: center;
+            padding: 45px 20px;
+            font-size: 0.88rem;
+            border-top: 1px solid #27272A;
+        }
+
+        footer a { color: #FEF08A; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        /* ----- RESPONSIVE / ADAPTACIÓN MÓVIL Y MENÚ HAMBURGUESA ----- */
+        @media (max-width: 991px) {
+            .hamburger-btn {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 73px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 73px);
+                background: rgba(255, 253, 249, 0.98);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 40px;
+                gap: 25px;
+                transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+                font-weight: 600;
+            }
+
+            .hero-slider { height: 460px; }
+            .slide h1 { font-size: 2.2rem; }
+            .section-title { font-size: 1.9rem; }
+            .business-wrapper, .closing-wrapper { padding: 45px 25px; }
         }
     </style>
 </head>
-<body>
+<body id="inicio">
 
-    <!-- NAVBAR -->
+    <!-- NAVBAR SUPERIOR -->
     <nav class="navbar">
-        <a href="#" class="logo">
-            <i class="fa-solid fa-leaf"></i> HGW Colombia
-        </a>
-        <ul class="nav-links">
-            <li><a href="#destacados">Productos Solicitados</a></li>
-            <li><a href="#clinico">Ciencia & Prevención</a></li>
-            <li><a href="#testimonios">Historias Reales</a></li>
-            <li><a href="#combos">Combos</a></li>
-            <li><a href="#lineas">Categorías</a></li>
-            <li><a href="#negocio">Oportunidad</a></li>
-        </ul>
-        <a href="https://wa.me/573041222672?text=Hola,%20deseo%20asesoría%20personalizada%20de%20productos%20HGW" class="btn-ws-nav" target="_blank">
-            <i class="fa-brands fa-whatsapp"></i> Chat Directo
-        </a>
-    </nav>
-
-    <!-- SECCIÓN 1: HERO SLIDER (CARRUSEL DE ENTRADA / BANNERS PRINCIPALES) -->
-    <section class="hero-slider">
-        <!-- SLIDE 1 (RUPTURA) -->
-        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1600&q=80');">
-            <div class="slide-overlay"></div>
-            <div class="slide-content">
-                <h1>¿Cansada a diario aunque supuestamente duermas bien?</h1>
-                <p>El cansancio crónico, la inflamación y los problemas de piel no son normales. Devuélvele el equilibrio a tu cuerpo con nutrición de alta pureza.</p>
-                <a href="#destacados" class="btn-gold">Ver productos recomendados</a>
-            </div>
-        </div>
-
-        <!-- SLIDE 2 (TRANSFORMACIÓN) -->
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1512290900673-03099981f9b3?auto=format&fit=crop&w=1600&q=80');">
-            <div class="slide-overlay"></div>
-            <div class="slide-content">
-                <h1>Salud real que se siente por dentro y se nota por fuera.</h1>
-                <p>Fórmulas botánicas diseñadas para resolver el problema desde la raíz, no solo para disfrazar los síntomas.</p>
-                <a href="#destacados" class="btn-gold">Explorar la tienda</a>
-            </div>
-        </div>
-
-        <button class="slider-btn prev" onclick="moveSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
-        <button class="slider-btn next" onclick="moveSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
-    </section>
-
-    <!-- SECCIÓN 2: LOS 3 BLOQUES INICIALES (CULTURA / RAZONES DE CONFIANZA) -->
-    <div class="pillars-container">
-        <div class="pillars-grid">
-            <!-- Bloque 1 -->
-            <div class="pillar-card">
-                <div class="pillar-icon"><i class="fa-solid fa-dna"></i></div>
-                <h3>Máxima Absorción Celular</h3>
-                <p>Fórmulas puras procesadas para que tu cuerpo realmente absorba los nutrientes en lugar de desecharlos.</p>
-            </div>
-            <!-- Bloque 2 -->
-            <div class="pillar-card">
-                <div class="pillar-icon"><i class="fa-solid fa-seedling"></i></div>
-                <h3>Solución Desde la Raíz</h3>
-                <p>No tapamos síntomas. Nuestros extractos trabajan en desinflamar, detoxificar y equilibrar tu organismo.</p>
-            </div>
-            <!-- Bloque 3 -->
-            <div class="pillar-card">
-                <div class="pillar-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                <h3>Calidad Certificada & Segura</h3>
-                <p>Respaldado por certificaciones internacionales. Cuidado libre de tóxicos y seguro para toda tu familia.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- SECCIÓN 3: PRODUCTOS MÁS SOLICITADOS -->
-    <section class="section-block bg-products-featured" id="destacados">
-        <div class="section-header">
-            <h2>Productos Más Solicitados</h2>
-            <p>Innovaciones de consumo diario con tecnología aplicada para potenciar tu bienestar.</p>
-        </div>
-
-        <div class="grid-6-products">
-            <!-- Producto 1: Toallas de Día -->
-            <div class="featured-card">
-                <div>
-                    <div class="card-hook">"Dile adiós a la irritación y a la humedad molesta durante tu periodo."</div>
-                    <div class="card-title">Toallas de Día</div>
-                    <p class="card-text">La mayoría de las toallas sanitarias usan plásticos que atrapan la humedad y alteran tu pH. Diseñadas con algodón 100% puro y una banda de aniones, estas toallas eliminan bacterias y olores de forma natural, garantizando máxima absorción, frescura y protección sin irritar tu piel.</p>
-                    <div class="badges-list">
-                        <span class="badge-item"><i class="fa-solid fa-check"></i> Algodón 100% Puro</span>
-                        <span class="badge-item"><i class="fa-solid fa-bolt"></i> Banda de Aniones</span>
-                        <span class="badge-item"><i class="fa-solid fa-leaf"></i> Sin Plástico Rígido</span>
-                    </div>
-                </div>
-                <a href="https://wa.me/573041222672?text=Hola,%20deseo%20comprar%20o%20recibir%20información%20sobre%20las%20Toallas%20de%20Día%20HGW" class="btn-green" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i> Solicitar por WhatsApp
-                </a>
-            </div>
-
-            <!-- Producto 2: Protectores Diarios con Anión -->
-            <div class="featured-card">
-                <div>
-                    <div class="card-hook">"El problema no es usar protector: es usar protectores de plástico."</div>
-                    <div class="card-title">Protectores Diarios con Anión</div>
-                    <p class="card-text">Los comerciales asfixian tu zona íntima y causan infecciones. Con algodón 100% transpirable y cinta de aniones, estos protectores desintoxican la zona, eliminan bacterias y dejan respirar tu piel con total frescura.</p>
-                    <div class="badges-list">
-                        <span class="badge-item"><i class="fa-solid fa-check"></i> Algodón Transpirable</span>
-                        <span class="badge-item"><i class="fa-solid fa-shield"></i> Efecto Aniónico</span>
-                        <span class="badge-item"><i class="fa-solid fa-heart-pulse"></i> Protección Anti-Infecciones</span>
-                    </div>
-                </div>
-                <a href="https://wa.me/573041222672?text=Hola,%20deseo%20comprar%20o%20recibir%20información%20sobre%20los%20Protectores%20Diarios%20HGW" class="btn-green" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i> Solicitar por WhatsApp
-                </a>
-            </div>
-
-            <!-- Producto 3: Jabón de Turmalina -->
-            <div class="featured-card">
-                <div>
-                    <div class="card-hook">"¿Sabías que un jabón puede quitarte el estrés acumulado y ayudarte a dormir mejor?"</div>
-                    <div class="card-title">Jabón de Turmalina</div>
-                    <p class="card-text">No es solo lavar tu cuerpo: es liberar la carga del día. Los minerales de la turmalina ayudan a relajar la tensión corporal y calmar la fatiga nocturna, preparándote para un descanso verdaderamente reparador mientras dejan tu piel completamente limpia y libre de impurezas.</p>
-                    <div class="badges-list">
-                        <span class="badge-item"><i class="fa-solid fa-spa"></i> Libera Estrés</span>
-                        <span class="badge-item"><i class="fa-solid fa-moon"></i> Prepara el Descanso</span>
-                        <span class="badge-item"><i class="fa-solid fa-gem"></i> Limpieza Mineral</span>
-                    </div>
-                </div>
-                <a href="https://wa.me/573041222672?text=Hola,%20deseo%20comprar%20o%20recibir%20información%20sobre%20el%20Jabón%20de%20Turmalina%20HGW" class="btn-green" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i> Solicitar por WhatsApp
-                </a>
-            </div>
-
-            <!-- Producto 4: BlueBerry Candy -->
-            <div class="featured-card">
-                <div>
-                    <div class="card-hook">"¿Sufres de vista cansada por las pantallas?"</div>
-                    <div class="card-title">BlueBerry Candy</div>
-                    <p class="card-text">El ardor y la resequedad ocular son causados por la luz azul. Con extracto concentrado de arándano, estos caramelos protegen tu retina, alivian la fatiga visual y cuidan tu vista de forma deliciosa.</p>
-                    <div class="badges-list">
-                        <span class="badge-item"><i class="fa-solid fa-eye"></i> Escudo Luz Azul</span>
-                        <span class="badge-item"><i class="fa-solid fa-display"></i> Alivia la Fatiga Ocular</span>
-                        <span class="badge-item"><i class="fa-solid fa-apple-whole"></i> Antioxidante Natural</span>
-                    </div>
-                </div>
-                <a href="https://wa.me/573041222672?text=Hola,%20deseo%20comprar%20o%20recibir%20información%20sobre%20BlueBerry%20Candy%20HGW" class="btn-green" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i> Solicitar por WhatsApp
-                </a>
-            </div>
-
-            <!-- Producto 5: Lactiberry -->
-            <div class="featured-card">
-                <div>
-                    <div class="card-hook">"Protege tu digestión y tus vías urinarias en una sola toma."</div>
-                    <div class="card-title">Lactiberry</div>
-                    <p class="card-text">Refuerza tus defensas de forma natural. Su combinación de arándanos, producto lácteo protector y té negro aporta antioxidantes y cultivos que equilibran tu intestino, mejoran la digestión y previenen molestias urinarias.</p>
-                    <div class="badges-list">
-                        <span class="badge-item"><i class="fa-solid fa-notes-medical"></i> Protección Urinaria</span>
-                        <span class="badge-item"><i class="fa-solid fa-mug-hot"></i> Té Negro y Arándanos</span>
-                        <span class="badge-item"><i class="fa-solid fa-stomach"></i> Equilibrio Digestivo</span>
-                    </div>
-                </div>
-                <a href="https://wa.me/573041222672?text=Hola,%20deseo%20comprar%20o%20recibir%20información%20sobre%20Lactiberry%20HGW" class="btn-green" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i> Solicitar por WhatsApp
-                </a>
-            </div>
-
-            <!-- Producto 6: Plantillas de Turmalina -->
-            <div class="featured-card">
-                <div>
-                    <div class="card-hook">"Camina sin dolor y olvídate de las piernas pesadas."</div>
-                    <div class="card-title">Plantillas de Turmalina</div>
-                    <p class="card-text">Estar de pie todo el día no tiene por qué agotar tu cuerpo. Con nódulos de turmalina que estimulan la microcirculación y dan un masaje acupresor en cada paso, estas plantillas desinflaman, alivian el cansancio y devuelven la ligereza a tus pies.</p>
-                    <div class="badges-list">
-                        <span class="badge-item"><i class="fa-solid fa-shoe-prints"></i> Acupresión Mineral</span>
-                        <span class="badge-item"><i class="fa-solid fa-person-walking"></i> Mejora la Circulación</span>
-                        <span class="badge-item"><i class="fa-solid fa-feather"></i> Alivio de Fatiga</span>
-                    </div>
-                </div>
-                <a href="https://wa.me/573041222672?text=Hola,%20deseo%20comprar%20o%20recibir%20información%20sobre%20las%20Plantillas%20de%20Turmalina%20HGW" class="btn-green" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i> Solicitar por WhatsApp
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ENFOQUE CLÍNICO Y PREVENTIVO -->
-    <section class="section-block bg-clinical" id="clinico">
-        <div class="section-header">
-            <h2>Enfoque Clínico y Preventivo</h2>
-            <p>La Ciencia de la Prevención Activa</p>
-        </div>
-
-        <div class="clinical-grid">
-            <div class="clinical-box">
-                <h3><i class="fa-solid fa-microscope"></i> Fórmulas Patentadas</h3>
-                <p>Nuestros extractos están estandarizados para ofrecer la concentración más alta de antocianinas y flavonoides por dosis.</p>
-            </div>
-            <div class="clinical-box">
-                <h3><i class="fa-solid fa-vial-circle-check"></i> Sin Agresores Químicos</h3>
-                <p>Priorizamos la pureza biológica. Fórmulas libres de parabenos, tóxicos y petrolatos agresivos para la piel y las mucosas.</p>
-            </div>
-            <div class="clinical-box">
-                <h3><i class="fa-solid fa-heart-circle-bolt"></i> Acción Sistémica</h3>
-                <p>No trabajamos sobre el síntoma aislado; apoyamos la autorregulación natural y celular de tu propio organismo.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- PRUEBA SOCIAL DIRECTA -->
-    <section class="section-block bg-social" id="testimonios">
-        <div class="section-header">
-            <h2>Prueba Social Directa</h2>
-            <p>Historias de Transformación Real</p>
-        </div>
-
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p>"Las toallas con anión me cambiaron la vida. Dejé de sufrir de inflamación e incomodidad durante mis periodos."</p>
-                <div class="testimonial-user">- Elena G., Medellín</div>
-            </div>
-            <div class="testimonial-card">
-                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p>"Trabajo todo el día frente al computador. Blueberry Candy me quitó el ardor de ojos que sentía cada tarde."</p>
-                <div class="testimonial-user">- Carlos M., Bogotá</div>
-            </div>
-            <div class="testimonial-card">
-                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p>"El jabón de turmalina deja la piel suave y relaja muchísimo los músculos antes de ir a dormir."</p>
-                <div class="testimonial-user">- Sandra P., Cali</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- AHORRO Y SINERGIA: COMBOS DE CONSUMO INTELIGENTE -->
-    <section class="section-block bg-combos" id="combos">
-        <div class="section-header">
-            <h2>Ahorro y Sinergia</h2>
-            <p>Combos de Consumo Inteligente</p>
-        </div>
-
-        <div class="combos-grid">
-            <div class="combo-card">
-                <div class="combo-header">
-                    <h3>Combo Cuidado Íntimo Total</h3>
-                </div>
-                <div class="combo-body">
-                    <p>Incluye Toallas de Día + Protectores Diarios de Anión. Protección constante, frescura y prevención de infecciones.</p>
-                    <div class="combo-price">Ahorro Sostenido</div>
-                    <a href="https://wa.me/573041222672?text=Hola,%20deseo%20ordenar%20el%20Combo%20Cuidado%20Íntimo%20Total" class="btn-green" target="_blank">
-                        <i class="fa-brands fa-whatsapp"></i> Pedir Combo
-                    </a>
-                </div>
-            </div>
-
-            <div class="combo-card">
-                <div class="combo-header">
-                    <h3>Combo Descanso & Circulación</h3>
-                </div>
-                <div class="combo-body">
-                    <p>Incluye Jabón de Turmalina + Plantillas de Turmalina. Libera el estrés acumulado y revitaliza tus piernas cansadas.</p>
-                    <div class="combo-price">Ahorro Sostenido</div>
-                    <a href="https://wa.me/573041222672?text=Hola,%20deseo%20ordenar%20el%20Combo%20Descanso%20y%20Circulación" class="btn-green" target="_blank">
-                        <i class="fa-brands fa-whatsapp"></i> Pedir Combo
-                    </a>
-                </div>
-            </div>
-
-            <div class="combo-card">
-                <div class="combo-header">
-                    <h3>Combo Bienestar & Vista</h3>
-                </div>
-                <div class="combo-body">
-                    <p>Incluye Lactiberry + BlueBerry Candy. Protección antioxidante interna y escudo frente a la fatiga visual de pantallas.</p>
-                    <div class="combo-price">Ahorro Sostenido</div>
-                    <a href="https://wa.me/573041222672?text=Hola,%20deseo%20ordenar%20el%20Combo%20Bienestar%20y%20Vista" class="btn-green" target="_blank">
-                        <i class="fa-brands fa-whatsapp"></i> Pedir Combo
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NUESTRAS LÍNEAS DE ÉXITO -->
-    <section class="section-block bg-categories" id="lineas">
-        <div class="section-header">
-            <h2>Nuestras Líneas de Éxito</h2>
-            <p>Las 5 Categorías Principales HGW</p>
-        </div>
-
-        <div class="categories-grid">
-            <div class="category-card">
-                <i class="fa-solid fa-mug-hot"></i>
-                <h3>Cafés Funcionales</h3>
-            </div>
-            <div class="category-card">
-                <i class="fa-solid fa-venus"></i>
-                <h3>Cuidado Femenino</h3>
-            </div>
-            <div class="category-card">
-                <i class="fa-solid fa-gem"></i>
-                <h3>Tecnología Turmalina</h3>
-            </div>
-            <div class="category-card">
-                <i class="fa-solid fa-capsules"></i>
-                <h3>Suplementación</h3>
-            </div>
-            <div class="category-card">
-                <i class="fa-solid fa-pump-soap"></i>
-                <h3>Cuidado Personal</h3>
-            </div>
-        </div>
-    </section>
-
-    <!-- OPORTUNIDAD DE NEGOCIO -->
-    <section class="bg-business" id="negocio">
-        <div class="section-header" style="margin-bottom:20px;">
-            <h2>Naciste para Algo Más Grande que Vivir para Pagar Deudas</h2>
-            <p style="color:#cbd5e1;">Nunca es Tarde para Crear un Ajuste en tu Vida.</p>
-        </div>
-
-        <div class="business-grid">
-            <div class="business-card">
-                <h3><i class="fa-solid fa-chart-line" style="color:var(--accent-gold);"></i> Rentabilidad Directa</h3>
-                <p>Márgenes de ganancia sumamente atractivos desde la primera venta, comercializando productos de alta rotación.</p>
-            </div>
-            <div class="business-card">
-                <h3><i class="fa-solid fa-users" style="color:var(--accent-gold);"></i> Red & Apalancamiento</h3>
-                <p>Construye un equipo global con acompañamiento constante y capacitaciones semanales de liderazgo.</p>
-            </div>
-            <div class="business-card">
-                <h3><i class="fa-solid fa-plane" style="color:var(--accent-gold);"></i> Incentivos & Viajes</h3>
-                <p>Accede a bonos en efectivo y viajes nacionales e internacionales alcanzando las metas de la compañía.</p>
-            </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 40px;">
-            <a href="https://wa.me/573041222672?text=Hola,%20quiero%20conocer%20el%20plan%20de%20negocio%20HGW%20y%20agendar%20una%20reunión" class="btn-gold" target="_blank">
-                Conocer la Oportunidad de Negocio
-            </a>
-        </div>
-    </section>
-
-    <!-- MODAL POPUP DE CAPTURA -->
-    <div class="modal-overlay" id="captureModal">
-        <div class="modal-card">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <h3 style="color:var(--primary-green); margin-bottom: 10px;">¡Recibe Asesoría Gratuita!</h3>
-            <p style="font-size:0.9rem; color:#64748b; margin-bottom: 20px;">Déjanos tus datos para enviarte el catálogo digital completo y resolver tus dudas vía WhatsApp.</p>
-            <input type="text" id="userName" class="form-input" placeholder="Tu Nombre">
-            <input type="tel" id="userPhone" class="form-input" placeholder="Tu Teléfono / WhatsApp">
-            <button class="btn-green" style="margin-top:10px;" onclick="sendModalData()">
-                <i class="fa-brands fa-whatsapp"></i> Recibir Catálogo
+        <a href="#inicio" class="logo">HGW Latam by DC pro</a>
+        <div class="nav-right">
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#tendencia">Más Solicitados</a></li>
+                <li><a href="#prevencion">Prevención</a></li>
+                <li><a href="#testimonios">Historias</a></li>
+                <li><a href="#combos">Combos</a></li>
+                <li><a href="#categorias">Categorías</a></li>
+                <li><a href="#nuevos">Lo Nuevo</a></li>
+                <li><a href="#negocio">Oportunidad</a></li>
+            </ul>
+            <a href="https://wa.me/573041222672?text=Hola%20Daniel,%20deseo%20asesoría" class="btn-wa-header" target="_blank">💬 WhatsApp</a>
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menú de navegación">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
         </div>
+    </nav>
+
+    <!-- BANNER ROTATIVO (HERO SLIDER) CON GLOW GRADIENT -->
+    <div class="hero-slider">
+        <div class="slider-track">
+            <div class="slide slide-1">
+                <h1>Transforma tu Salud con HGW</h1>
+                <p>Nanotecnología y suplementación avanzada de vanguardia enfocada en la medicina preventiva e integral.</p>
+                <a href="#prevencion" class="btn-slide-cta">Conocer la Ciencia</a>
+            </div>
+            <div class="slide slide-2">
+                <h1>Descubre tu Verdadero Propósito</h1>
+                <p>Construye un legado de éxito duradero, recupera tiempo valioso en familia y alcanza un bienestar pleno.</p>
+                <a href="#negocio" class="btn-slide-cta">Conocer Oportunidad</a>
+            </div>
+        </div>
     </div>
+
+    <!-- TRES PILARES PRINCIPALES -->
+    <div class="pillars-wrapper">
+        <div class="pillars-grid">
+            <div class="pillar-card">
+                <h3>🌿 Salud Integral y Prevención</h3>
+                <ul>
+                    <li><strong>Tecnología de la Turmalina:</strong> Emisión de aniones para el equilibrio corporal óptimo.</li>
+                    <li><strong>Arándanos Canadienses:</strong> La mayor concentración natural de antioxidantes.</li>
+                    <li><strong>Bebidas Funcionales:</strong> Mezclas gourmet de café con Ganoderma Lucidum diario.</li>
+                </ul>
+            </div>
+            <div class="pillar-card">
+                <h3>🌱 Propósito de Vida</h3>
+                <ul>
+                    <li><strong>Más allá de pagar cuentas:</strong> Un modelo para trascender e impactar positivamente.</li>
+                    <li><strong>Tiempo en Familia:</strong> Libertad de tiempo para quienes realmente te importan.</li>
+                    <li><strong>Construcción de Legado:</strong> Un activo heredable, ético y de consumo masivo.</li>
+                </ul>
+            </div>
+            <div class="pillar-card">
+                <h3>🤝 Comunidad Activa</h3>
+                <ul>
+                    <li><strong>Acompañamiento Estratégico:</strong> Capacitaciones integrales con Team Elite.</li>
+                    <li><strong>Herramientas Digitales:</strong> Sistema probado de prospección y marketing.</li>
+                    <li><strong>Crecimiento Mutuo:</strong> Un ecosistema dinámico enfocado en el éxito colectivo.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 1. SECCIÓN PRODUCTOS TENDENCIA (ALTA DEMANDA) -->
+    <section class="section-block bg-slate-soft glow-bg-section" id="tendencia">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Alta Demanda</span>
+                <h2 class="section-title">Productos Más Solicitados</h2>
+                <p style="color: var(--text-body);">Innovaciones de consumo diario con tecnología aplicada para potenciar tu bienestar.</p>
+            </div>
+
+            <div class="products-grid-4">
+                <!-- 1 -->
+                <div class="product-card">
+                    <div>
+                        <span class="product-badge">Cuidado Bucal</span>
+                        <div class="product-img-box">[ Imagen HD Crema Herbs ]</div>
+                        <h4>Crema Dental Herbs</h4>
+                        <p>Extractos herbales selectos que fortalecen y protegen las encías, evitan la acumulación de placa bacteriana y refrescan el aliento sin abrasivos.</p>
+                    </div>
+                    <a href="https://wa.me/573041222672?text=Solicito%20Crema%20Herbs" class="btn-buy" target="_blank">Pedir por WhatsApp</a>
+                </div>
+
+                <!-- 2 -->
+                <div class="product-card">
+                    <div>
+                        <span class="product-badge">Microbiota Oral</span>
+                        <div class="product-img-box">[ Imagen HD Crema Probióticos ]</div>
+                        <h4>Crema Dental de Probióticos</h4>
+                        <p>Avanzada fórmula con probióticos activos diseñados para equilibrar la microbiota bucal, proteger el esmalte y combatir el origen de la caries.</p>
+                    </div>
+                    <a href="https://wa.me/573041222672?text=Solicito%20Crema%20Probioticos" class="btn-buy" target="_blank">Pedir por WhatsApp</a>
+                </div>
+
+                <!-- 3 -->
+                <div class="product-card">
+                    <div>
+                        <span class="product-badge">Cuidado Femenino</span>
+                        <div class="product-img-box">[ Imagen HD Toallas Día ]</div>
+                        <h4>Toallas Día con Turmalina</h4>
+                        <p>Anatómicas y respirables, integran una cinta de turmalina emisora de aniones para regular el pH, aliviar molestias y neutralizar olores.</p>
+                    </div>
+                    <a href="https://wa.me/573041222672?text=Solicito%20Toallas%20Dia" class="btn-buy" target="_blank">Pedir por WhatsApp</a>
+                </div>
+
+                <!-- 4 -->
+                <div class="product-card">
+                    <div>
+                        <span class="product-badge">Uso Diario Íntimo</span>
+                        <div class="product-img-box">[ Imagen HD Protectores ]</div>
+                        <h4>Protectores Diarios con Anión</h4>
+                        <p>Protección ultradelgada y totalmente transpirable con tecnología activa de anión para una higiene diaria óptima, libre de irritaciones.</p>
+                    </div>
+                    <a href="https://wa.me/573041222672?text=Solicito%20Protectores" class="btn-buy" target="_blank">Pedir por WhatsApp</a>
+                </div>
+
+                <!-- 5 -->
+                <div class="product-card">
+                    <div>
+                        <span class="product-badge">Dermatología</span>
+                        <div class="product-img-box">[ Imagen HD Jabón Turmalina ]</div>
+                        <h4>Jabón de Turmalina</h4>
+                        <p>Limpia suavemente mientras estimula la microcirculación cutánea superficial, ayuda a balancear el exceso de grasa y revitaliza los tejidos.</p>
+                    </div>
+                    <a href="https://wa.me/573041222672?text=Solicito%20Jabon%20Turmalina" class="btn-buy" target="_blank">Pedir por WhatsApp</a>
+                </div>
+
+                <!-- 6 -->
+                <div class="product-card">
+                    <div>
+                        <span class="product-badge">Antioxidante Familiar</span>
+                        <div class="product-img-box">[ Imagen HD BlueBerry Candy ]</div>
+                        <h4>BlueBerry Candy</h4>
+                        <p>Deliciosos caramelos funcionales enriquecidos con extracto concentrado de arándanos silvestres, ricos en fitonutrientes activos.</p>
+                    </div>
+                    <a href="https://wa.me/573041222672?text=Solicito%20BlueBerry%20Candy" class="btn-buy" target="_blank">Pedir por WhatsApp</a>
+                </div>
+
+                <!-- 7 -->
+                <div class="product-card">
+                    <div>
+                        <span class="product-badge">Digestión e Inmunidad</span>
+                        <div class="product-img-box">[ Imagen HD Lactiberry ]</div>
+                        <h4>Lactiberry</h4>
+                        <p>Fórmula simbiótica de arándanos y bacterias ácido-lácticas benéficas, ideal para repoblar la flora digestiva y apoyar defensas.</p>
+                    </div>
+                    <a href="https://wa.me/573041222672?text=Solicito%20Lactiberry" class="btn-buy" target="_blank">Pedir por WhatsApp</a>
+                </div>
+
+                <!-- 8 -->
+                <div class="product-card">
+                    <div>
+                        <span class="product-badge">Ortopedia y Circulación</span>
+                        <div class="product-img-box">[ Imagen HD Plantillas Turmalina ]</div>
+                        <h4>Plantillas de Turmalina</h4>
+                        <p>Diseño ergonómico con puntos de presión y microemisión de aniones para estimular la circulación plantar y aliviar el cansancio muscular.</p>
+                    </div>
+                    <a href="https://wa.me/573041222672?text=Solicito%20Plantillas%20Turmalina" class="btn-buy" target="_blank">Pedir por WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. SECCIÓN SALUD PREVENTIVA Y CIENCIA -->
+    <section class="section-block bg-emerald-soft" id="prevencion">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Enfoque Clínico y Preventivo</span>
+                <h2 class="section-title">La Ciencia de la Prevención Activa</h2>
+                <p style="color: var(--text-body);">La medicina moderna demuestra que la neutralización diaria de los radicales libres y la optimización celular son el núcleo de una salud duradera.</p>
+            </div>
+
+            <div class="science-grid">
+                <!-- Bloque 1: Turmalina -->
+                <div class="science-card">
+                    <div class="img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&w=800&q=80');">
+                        <div class="img-overlay-science">Biotecnología Celular</div>
+                    </div>
+                    <div class="science-card-body">
+                        <h3>Biotecnología de la Turmalina</h3>
+                        <p>Desde la perspectiva física y médica, la turmalina emite de forma natural infrarrojo lejano y aniones. Esta tecnología favorece la vasodilatación capilar, optimiza la microcirculación local y ayuda a disminuir procesos inflamatorios en tejidos corporales.</p>
+                    </div>
+                </div>
+
+                <!-- Bloque 2: Arándano Azul -->
+                <div class="science-card">
+                    <div class="img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1498557850523-fd3d118b962e?auto=format&fit=crop&w=800&q=80');">
+                        <div class="img-overlay-science">Antioxidantes Activos</div>
+                    </div>
+                    <div class="science-card-body">
+                        <h3>Arándanos Azules Canadienses</h3>
+                        <p>Contienen una altísima densidad de antocianinas y flavonoides activos de alta absorción. Estas moléculas bioactivas actúan neutralizando el estrés oxidativo celular, protegiendo eficazmente el sistema cardiovascular y la microcirculación retiniana.</p>
+                    </div>
+                </div>
+
+                <!-- Bloque 3: Bebidas Funcionales -->
+                <div class="science-card">
+                    <div class="img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80');">
+                        <div class="img-overlay-science">Nanotecnología de Consumo</div>
+                    </div>
+                    <div class="science-card-body">
+                        <h3>Bebidas y Mezclas Funcionales</h3>
+                        <p>La infusión gourmet combinada con Ganoderma Lucidum y nanotecnología permite una asimilación biológica superior de polisacáridos y triterpenos, optimizando el sistema inmunológico adaptativo sin alterar tu ritmo diario habitual.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. HISTORIAS DE TRANSFORMACIÓN (VIDEOS REELS/SHORTS) -->
+    <section class="section-block bg-white glow-bg-section" id="testimonios">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Prueba Social Directa</span>
+                <h2 class="section-title">Historias de Transformación Real</h2>
+                <p style="color: var(--text-body);">Conoce los testimonios en formato de video vertical de personas que optimizaron su salud y transformaron sus vidas.</p>
+            </div>
+
+            <div class="video-grid-3">
+                <!-- Video 1 -->
+                <div class="video-card-vertical">
+                    <div class="video-overlay-details">
+                        <div class="play-btn">▶</div>
+                        <h5 style="font-weight: 700; margin-bottom: 5px;">Testimonio Bienestar Femenino</h5>
+                        <p style="font-size: 0.78rem; opacity: 0.8;">"Alivio y tecnología de aniones"</p>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="video-card-vertical">
+                    <div class="video-overlay-details">
+                        <div class="play-btn">▶</div>
+                        <h5 style="font-weight: 700; margin-bottom: 5px;">Testimonio Energía y Vitalidad</h5>
+                        <p style="font-size: 0.78rem; opacity: 0.8;">"Mi rutina diaria con antioxidantes"</p>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="video-card-vertical">
+                    <div class="video-overlay-details">
+                        <div class="play-btn">▶</div>
+                        <h5 style="font-weight: 700; margin-bottom: 5px;">Testimonio Emprendimiento HGW</h5>
+                        <p style="font-size: 0.78rem; opacity: 0.8;">"Propósito, tiempo y libertad familiar"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SECCIÓN COMBOS RECOMENDADOS -->
+    <section class="section-block bg-yellow-soft" id="combos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Ahorro y Sinergia</span>
+                <h2 class="section-title">Combos de Consumo Inteligente</h2>
+                <p style="color: var(--text-body);">Sinergias integrales de productos con descuento para un abordaje completo y un óptimo ahorro familiar.</p>
+            </div>
+
+            <div class="products-grid-4" style="max-width: 1000px; margin: 0 auto;">
+                <!-- Combo 1 -->
+                <div class="product-card">
+                    <div>
+                        <span class="product-badge">Salud Femenina</span>
+                        <div class="product-img-box">[ Combo Salud Femenina HD ]</div>
+                        <h4>Combo Salud Femenina</h4>
+                        <p>Incluye Toallas Día, Protectores Diarios y Jabón de Turmalina. Diseñado para un cuidado menstrual fisiológico y libre de componentes sintéticos.</p>
+                    </div>
+                    <a href="https://wa.me/573041222672?text=Solicito%20Combo%20Salud%20Femenina" class="btn-buy" target="_blank">Pedir Combo por WhatsApp</a>
+                </div>
+
+                <!-- Combo 2 -->
+                <div class="product-card">
+                    <div>
+                        <span class="product-badge">Rendimiento</span>
+                        <div class="product-img-box">[ Combo Energía Diaria HD ]</div>
+                        <h4>Combo Energía Diaria</h4>
+                        <p>Incluye Berry Coffee y caramelos BlueBerry Candy. Energía constante y de liberación natural sin efectos estimulantes secundarios sobre el sistema nervioso.</p>
+                    </div>
+                    <a href="https://wa.me/573041222672?text=Solicito%20Combo%20Energia%20Diaria" class="btn-buy" target="_blank">Pedir Combo por WhatsApp</a>
+                </div>
+
+                <!-- Combo 3 -->
+                <div class="product-card">
+                    <div>
+                        <span class="product-badge">Inmunológico</span>
+                        <div class="product-img-box">[ Combo Refuerzo Defensas HD ]</div>
+                        <h4>Combo Refuerzo Defensas</h4>
+                        <p>Combina Ganoderma Coffee de alta pureza con Lactiberry. Equilibra la microbiota intestinal promoviendo una barrera inmunológica vigorosa.</p>
+                    </div>
+                    <a href="https://wa.me/573041222672?text=Solicito%20Combo%20Refuerzo%20Defensas" class="btn-buy" target="_blank">Pedir Combo por WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. SECCIÓN CATEGORÍAS PRINCIPALES -->
+    <section class="section-block bg-green-soft" id="categorias">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Nuestras Líneas de Éxito</span>
+                <h2 class="section-title">Las 5 Categorías Principales HGW</h2>
+                <p style="color: var(--text-body);">Haz clic en cualquiera de nuestras categorías científicamente desarrolladas para explorar cada gama completa.</p>
+            </div>
+
+            <div class="categories-5-grid">
+                <a href="categoria-alimentos.html" class="category-item-card">
+                    <div class="cat-icon-wrapper">☕</div>
+                    <h4>Alimentos & Energía Diaria</h4>
+                </a>
+                <a href="categoria-higiene.html" class="category-item-card">
+                    <div class="cat-icon-wrapper">🧴</div>
+                    <h4>Higiene & Cuidado Personal</h4>
+                </a>
+                <a href="categoria-belleza.html" class="category-item-card">
+                    <div class="cat-icon-wrapper">✨</div>
+                    <h4>Belleza, Skin Care & Regeneración</h4>
+                </a>
+                <a href="categoria-suplementacion.html" class="category-item-card">
+                    <div class="cat-icon-wrapper">🌿</div>
+                    <h4>Salud Interna & Suplementación</h4>
+                </a>
+                <a href="categoria-bienestar.html" class="category-item-card">
+                    <div class="cat-icon-wrapper">🏡</div>
+                    <h4>Bienestar Avanzado & Estilo de Vida</h4>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. SECCIÓN LO NUEVO -->
+    <section class="section-block bg-indigo-soft" id="nuevos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Últimas Innovaciones</span>
+                <h2 class="section-title">Lo Más Nuevo en HGW Colombia</h2>
+                <p style="color: var(--text-body);">Explora nuestros lanzamientos más recientes y descubre los desarrollos biotecnológicos en camino.</p>
+            </div>
+
+            <div class="products-grid-4">
+                <!-- Producto Real -->
+                <div class="product-card">
+                    <div>
+                        <span class="product-badge">¡Nuevo!</span>
+                        <div class="product-img-box">[ Imagen HD Nuevo Candy ]</div>
+                        <h4>Nuevos Candy de Arándanos</h4>
+                        <p>Formulación de caramelos funcionales mejorada con mayor concentración de antocianinas y un práctico envase de dosificación.</p>
+                    </div>
+                    <a href="https://wa.me/573041222672?text=Consultar%20Nuevos%20Candy" class="btn-buy" target="_blank">Consultar por WhatsApp</a>
+                </div>
+
+                <!-- Slot Próximamente 1 -->
+                <div class="product-card" style="background: rgba(255, 255, 255, 0.7); opacity: 0.9;">
+                    <div>
+                        <span class="product-badge" style="background: var(--bg-secondary); color: var(--text-title);">Desarrollo</span>
+                        <div class="product-img-box" style="border-style: dotted;">Próximo Lanzamiento 2026</div>
+                        <h4>Lanzamiento HGW en camino</h4>
+                        <p>Espacio reservado para las innovaciones biotecnológicas en fase avanzada de registro sanitario en Colombia.</p>
+                    </div>
+                    <a href="https://wa.me/573041222672?text=Consultar%20Lanzamientos" class="btn-secondary" target="_blank">Saber Más por WhatsApp</a>
+                </div>
+
+                <!-- Slot Próximamente 2 -->
+                <div class="product-card" style="background: rgba(255, 255, 255, 0.7); opacity: 0.9;">
+                    <div>
+                        <span class="product-badge" style="background: var(--bg-secondary); color: var(--text-title);">Desarrollo</span>
+                        <div class="product-img-box" style="border-style: dotted;">Próximo Lanzamiento 2026</div>
+                        <h4>Lanzamiento HGW en camino</h4>
+                        <p>Nuevas líneas de suplementación avanzada para el rendimiento diario y apoyo cognitivo.</p>
+                    </div>
+                    <a href="https://wa.me/573041222672?text=Consultar%20Lanzamientos" class="btn-secondary" target="_blank">Saber Más por WhatsApp</a>
+                </div>
+
+                <!-- Slot Próximamente 3 -->
+                <div class="product-card" style="background: rgba(255, 255, 255, 0.7); opacity: 0.9;">
+                    <div>
+                        <span class="product-badge" style="background: var(--bg-secondary); color: var(--text-title);">Desarrollo</span>
+                        <div class="product-img-box" style="border-style: dotted;">Próximo Lanzamiento 2026</div>
+                        <h4>Lanzamiento HGW en camino</h4>
+                        <p>Dispositivos de bienestar avanzados basados en la emisión fisiológica de iones y soporte estructural.</p>
+                    </div>
+                    <a href="https://wa.me/573041222672?text=Consultar%20Lanzamientos" class="btn-secondary" target="_blank">Saber Más por WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. SECCIÓN OPORTUNIDAD CON ENFOQUE DE PROPÓSITO -->
+    <section class="section-block bg-slate-soft" id="negocio">
+        <div class="container">
+            <div class="business-wrapper">
+                <div class="business-header">
+                    <h2>Naciste para Algo Más Grande que Vivir para Pagar Deudas</h2>
+                    <p>La vida plena se construye en equilibrio. Creemos que la verdadera libertad consiste en disponer de la salud óptima para disfrutar de tu tiempo, la presencia para estar al lado de tu familia en momentos clave y la capacidad de construir un legado duradero para las futuras generaciones.</p>
+                </div>
+
+                <div class="purpose-grid">
+                    <!-- Pilar 1 -->
+                    <div class="purpose-card">
+                        <div class="icon">👨‍👩‍👧‍👦</div>
+                        <h4>Tiempo en Familia</h4>
+                        <p>Recupera horas de incalculable valor y sé el protagonista de la vida de tus hijos y seres queridos, no un espectador ausente.</p>
+                    </div>
+                    <!-- Pilar 2 -->
+                    <div class="purpose-card">
+                        <div class="icon">🌿</div>
+                        <h4>Salud Integral</h4>
+                        <p>La riqueza económica sin salud carece de sentido. Priorizamos la vitalidad celular y mental como las bases de tu éxito.</p>
+                    </div>
+                    <!-- Pilar 3 -->
+                    <div class="purpose-card">
+                        <div class="icon">🏛</div>
+                        <h4>Un Legado Real</h4>
+                        <p>Desarrolla un modelo de distribución de consumo masivo con un sistema escalable y honesto que impacte la vida de otros.</p>
+                    </div>
+                </div>
+
+                <div class="cta-business-box">
+                    <h3 style="font-size: 1.45rem; margin-bottom: 10px; font-weight: 700; color: white;">Únete a nuestra Comunidad Team Elite</h3>
+                    <p style="font-size: 0.95rem; color: #A1A1AA; line-height: 1.6;">Te guiamos paso a paso en tu formación profesional, dotándote de herramientas de marketing digital, estrategias probadas y un equipo unido enfocado en tu desarrollo.</p>
+                    <a href="https://wa.me/573041222672?text=Hola%20Daniel,%20quiero%20conocer%20la%20oportunidad%20con%20proposito" class="btn-gold" target="_blank">Hablar con Daniel Currea por WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. SECCIÓN DE CIERRE Y AJUSTE DE VIDA -->
+    <section class="section-block bg-white glow-bg-section" id="cierre">
+        <div class="container">
+            <div class="closing-wrapper">
+                <h2 class="closing-title">Nunca es Tarde para Crear un Ajuste en tu Vida</h2>
+                <p class="closing-quote">
+                    El mejor momento para plantar un árbol fue hace 20 años; el segundo mejor momento es hoy. Regálate la oportunidad de restaurar la armonía en tus pilares fundamentales de bienestar.
+                </p>
+
+                <div class="pillars-3-health">
+                    <!-- Salud 1 -->
+                    <div class="health-card">
+                        <h4>🙏 Salud Espiritual</h4>
+                        <p>Vivir en plena coherencia con tus valores morales primordiales, desarrollando claridad mental y un claro sentido de contribución humana.</p>
+                    </div>
+                    <!-- Salud 2 -->
+                    <div class="health-card">
+                        <h4>🧠 Salud Física y Mental</h4>
+                        <p>Nutrir tus células con prevención activa, regulando de forma natural el estrés diario para un estado de energía vibrante.</p>
+                    </div>
+                    <!-- Salud 3 -->
+                    <div class="health-card">
+                        <h4>📈 Salud Financiera</h4>
+                        <p>Edificar la tranquilidad y prosperidad económica a mediano y largo plazo mediante un sistema sostenible, heredable y equitativo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTROLES FLOTANTES -->
+    <div class="floating-controls">
+        <a href="#inicio" class="btn-float-top" title="Volver al inicio">↑</a>
+        <a href="https://wa.me/573041222672?text=Hola%20Daniel,%20quiero%20recibir%20asesoria" class="btn-float-wa" target="_blank">
+            💬 Asesoría
+        </a>
+    </div>
+
+    <!-- POP-UP EXIT INTENT CON CAPTURA DE BASE DE DATOS -->
+    <div class="modal-overlay" id="exitModal">
+        <div class="modal-box">
+            <span class="modal-close" id="closeModal">&times;</span>
+            <div style="font-size: 2.8rem; margin-bottom: 12px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));">🎁</div>
+            <h3>¡No te vayas sin tu obsequio!</h3>
+            <p style="color: var(--text-body); font-size: 0.92rem; line-height: 1.6;">Ingresa tus datos a continuación para recibir nuestro <strong>Catálogo Digital de Productos y la Guía de Descuentos 2026</strong> directamente en tu correo y WhatsApp.</p>
+            
+            <form id="leadForm" class="modal-form">
+                <div class="form-group">
+                    <label for="form-nombre">Nombre Completo:</label>
+                    <input type="text" id="form-nombre" name="nombre" required placeholder="Ej. Juan Pérez">
+                </div>
+                <div class="form-group">
+                    <label for="form-correo">Correo Electrónico:</label>
+                    <input type="email" id="form-correo" name="correo" required placeholder="ejemplo@correo.com">
+                </div>
+                <div class="form-group">
+                    <label for="form-whatsapp">WhatsApp (con indicativo de país):</label>
+                    <input type="tel" id="form-whatsapp" name="whatsapp" required placeholder="Ej. +57 304 1222672">
+                </div>
+                <button type="submit" class="btn-gift">Enviar y Recibir Obsequio</button>
+            </form>
+            
+            <div id="formSuccess" class="form-success-msg">
+                ¡Registro completado con éxito! Redirigiéndote a WhatsApp...
+            </div>
+        </div>
+    </div
 
     <!-- FOOTER -->
     <footer>
-        <p>© 2026 HGW Colombia - Bienestar, Salud & Prosperidad. Todos los derechos reservados.</p>
-        <p style="margin-top:10px;">Atención y Pedidos por WhatsApp: <a href="https://wa.me/573041222672" target="_blank">+57 304 1222672</a></p>
+        <p>© 2026 HGW Colombia — Salud, Propósito de Vida y Transformación Integral. Todos los derechos reservados.</p>
+        <p style="margin-top: 10px; font-weight: 500;">Contacto Directo WhatsApp: <a href="https://wa.me/573041222672">+57 304 1222672</a></p>
     </footer>
 
-    <!-- JAVASCRIPT SLIDER & MODAL -->
+    <!-- LÓGICA DE INTERACCIÓN SCRIPT (MENÚ MÓVIL, EXIT-INTENT Y FORMULARIO) -->
     <script>
-        // --- HERO SLIDER SCRIPT ---
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
+        // 1. TOGGLE MENÚ HAMBURGUESA EN MÓVIL
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const navLinks = document.getElementById('navLinks');
 
-        function showSlide(index) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            if (index >= slides.length) currentSlide = 0;
-            else if (index < 0) currentSlide = slides.length - 1;
-            else currentSlide = index;
-            slides[currentSlide].classList.add('active');
-        }
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
 
-        function moveSlide(direction) {
-            showSlide(currentSlide + direction);
-        }
+        // Cerrar menú al hacer clic en cualquier enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
 
-        setInterval(() => {
-            moveSlide(1);
-        }, 7000);
+        // 2. LÓGICA EXIT-INTENT MODAL
+        let modalShown = false;
+        const modal = document.getElementById('exitModal');
+        const closeModal = document.getElementById('closeModal');
+        const form = document.getElementById('leadForm');
+        const successDiv = document.getElementById('formSuccess');
 
-        // --- POPUP MODAL SCRIPT ---
-        setTimeout(() => {
-            document.getElementById('captureModal').style.display = 'flex';
-        }, 12000);
-
-        function closeModal() {
-            document.getElementById('captureModal').style.display = 'none';
-        }
-
-        function sendModalData() {
-            const name = document.getElementById('userName').value.trim();
-            const phone = document.getElementById('userPhone').value.trim();
-            if (name === "" || phone === "") {
-                alert("Por favor completa tu nombre y número de teléfono.");
-                return;
+        document.addEventListener('mouseleave', function(e) {
+            if (e.clientY < 10 && !modalShown) {
+                modal.style.display = 'flex';
+                setTimeout(() => {
+                    modal.style.opacity = '1';
+                    modal.querySelector('.modal-box').style.transform = 'scale(1)';
+                }, 50);
+                modalShown = true;
             }
-            const message = `Hola, mi nombre es ${encodeURIComponent(name)} (${encodeURIComponent(phone)}). Me gustaría recibir el catálogo digital completo de HGW Colombia.`;
-            window.open(`https://wa.me/573041222672?text=${message}`, '_blank');
-            closeModal();
+        });
+
+        function hideModal() {
+            modal.style.opacity = '0';
+            modal.querySelector('.modal-box').style.transform = 'scale(0.85)';
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 400);
         }
+
+        closeModal.addEventListener('click', hideModal);
+
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                hideModal();
+            }
+        });
+
+        // 3. ENVÍO DE DATOS Y REDIRECCIÓN A WHATSAPP
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const submitBtn = form.querySelector('button[type="submit"]');
+            submitBtn.textContent = 'Enviando...';
+            submitBtn.disabled = true;
+
+            const leadNombre = document.getElementById('form-nombre').value;
+            const leadWhatsApp = document.getElementById('form-whatsapp').value;
+
+            setTimeout(() => {
+                form.style.display = 'none';
+                successDiv.style.display = 'block';
+
+                setTimeout(() => {
+                    window.open(`https://wa.me/573041222672?text=Hola%20Daniel,%20me%20acabo%20de%20registrar%20en%20tu%20sitio%20web.%20Mi%20nombre%20es%20${encodeURIComponent(leadNombre)}%20y%20mi%20teléfono%20es%20${encodeURIComponent(leadWhatsApp)}.%20Quiero%20solicitar%20mi%20catálogo%20y%20obsequio%20prometido.`, '_blank');
+                    hideModal();
+                }, 1200);
+            }, 600);
+        });
     </script>
 </body>
 </html>
