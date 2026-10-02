@@ -187,7 +187,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Animación del menú hamburguesa activado */
         .hamburger-btn.active span:nth-child(1) {
             transform: translateY(8px) rotate(45deg);
         }
@@ -253,17 +252,18 @@
         }
 
         .slide h1 {
-            font-size: 2.8rem;
+            font-size: 2.7rem;
             font-weight: 800;
             color: #ffffff;
             margin-bottom: 18px;
-            line-height: 1.2;
+            line-height: 1.25;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            max-width: 900px;
         }
 
         .slide p {
             font-size: 1.15rem;
-            max-width: 720px;
+            max-width: 760px;
             margin-bottom: 30px;
             opacity: 0.95;
             line-height: 1.7;
@@ -294,7 +294,7 @@
             100% { transform: translateX(0); }
         }
 
-        /* ----- 5. TRES PILARES PRINCIPALES ----- */
+        /* ----- 5. TRES PILARES PRINCIPALES (CULTURA Y CONFIANZA) ----- */
         .pillars-wrapper {
             max-width: 1200px;
             margin: -50px auto 20px auto;
@@ -325,28 +325,17 @@
 
         .pillar-card h3 {
             color: var(--text-title);
-            margin-bottom: 15px;
-            font-size: 1.3rem;
+            margin-bottom: 12px;
+            font-size: 1.25rem;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .pillar-card ul { list-style: none; }
-        .pillar-card ul li {
-            padding-left: 22px;
-            position: relative;
-            margin-bottom: 10px;
+        .pillar-card p {
             font-size: 0.92rem;
             color: var(--text-body);
-            line-height: 1.5;
-        }
-        .pillar-card ul li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--badge-bg);
-            font-weight: bold;
+            line-height: 1.6;
         }
 
         /* ----- 6. SECCIONES Y PATRÓN DE COLOR ----- */
@@ -411,17 +400,17 @@
             margin-bottom: 12px;
         }
 
-        /* ----- 7. TARJETAS Y PRODUCTOS (PRODUCT CARDS) ----- */
-        .products-grid-4, .science-grid, .categories-5-grid {
+        /* ----- 7. TARJETAS Y PRODUCTOS (PRODUCT CARDS CON HOOKS Y BADGES) ----- */
+        .products-grid-3, .science-grid, .categories-5-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 28px;
         }
 
         .product-card, .science-card, .category-item-card {
             background: #FFFFFF;
             border-radius: var(--radius-card);
-            padding: 24px;
+            padding: 26px;
             border: 1px solid var(--border-subtle);
             box-shadow: var(--shadow-card);
             display: flex;
@@ -437,7 +426,7 @@
         }
 
         .product-img-box {
-            height: 190px;
+            height: 180px;
             background: #FFFDF9;
             border-radius: var(--radius-sm);
             margin-bottom: 18px;
@@ -447,36 +436,49 @@
             color: var(--text-body);
             font-size: 0.85rem;
             border: 1px dashed var(--border-subtle);
-            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.06));
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.04));
         }
 
-        .product-badge {
-            align-self: flex-start;
-            background: var(--badge-bg);
-            color: var(--badge-text);
+        .product-hook {
             font-family: 'Outfit', sans-serif;
-            font-size: 0.75rem;
+            font-size: 1.05rem;
             font-weight: 700;
-            padding: 5px 12px;
-            border-radius: var(--radius-pill);
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .product-card h4, .science-card-body h3, .category-item-card h4 {
-            font-size: 1.15rem;
-            color: var(--text-title);
+            color: var(--cta-primary);
             margin-bottom: 10px;
-            font-weight: 700;
+            line-height: 1.35;
         }
 
-        .product-card p, .science-card-body p {
+        .product-card h4 {
+            font-size: 1.25rem;
+            color: var(--text-title);
+            margin-bottom: 12px;
+            font-weight: 800;
+        }
+
+        .product-card p {
             font-size: 0.9rem;
             color: var(--text-body);
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             line-height: 1.6;
             flex-grow: 1;
+        }
+
+        .badges-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+
+        .badge-pill {
+            background: var(--bg-secondary);
+            color: var(--text-title);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: var(--radius-pill);
+            border: 1px solid var(--border-subtle);
         }
 
         .btn-buy {
@@ -518,7 +520,7 @@
             color: var(--text-title);
         }
 
-        /* ----- 8. TRATAMIENTO DE CIENCIA Y CATEGORÍAS ----- */
+        /* ----- 8. CIENCIA Y CATEGORÍAS ----- */
         .science-card {
             padding: 0;
             overflow: hidden;
@@ -530,7 +532,6 @@
             background-size: cover;
             background-position: center;
             position: relative;
-            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.06));
         }
 
         .img-overlay-science {
@@ -982,8 +983,8 @@
                 font-weight: 600;
             }
 
-            .hero-slider { height: 460px; }
-            .slide h1 { font-size: 2.2rem; }
+            .hero-slider { height: 480px; }
+            .slide h1 { font-size: 2.1rem; }
             .section-title { font-size: 1.9rem; }
             .business-wrapper, .closing-wrapper { padding: 45px 25px; }
         }
@@ -1013,154 +1014,152 @@
         </div>
     </nav>
 
-    <!-- BANNER ROTATIVO (HERO SLIDER) CON GLOW GRADIENT -->
+    <!-- 1. BANNER ROTATIVO (HERO SLIDER) CON AJUSTES APROBADOS -->
     <div class="hero-slider">
         <div class="slider-track">
+            <!-- Slide 1: Pregunta Incisiva / Ruptura -->
             <div class="slide slide-1">
-                <h1>Transforma tu Salud con HGW</h1>
-                <p>Nanotecnología y suplementación avanzada de vanguardia enfocada en la medicina preventiva e integral.</p>
-                <a href="#prevencion" class="btn-slide-cta">Conocer la Ciencia</a>
+                <h1>¿Cansada a diario aunque supuestamente duermas bien?</h1>
+                <p>El cansancio crónico, la inflamación y los problemas de piel no son normales. Devuélvele el equilibrio a tu cuerpo con nutrición de alta pureza.</p>
+                <a href="#tendencia" class="btn-slide-cta">Ver productos recomendados</a>
             </div>
+            <!-- Slide 2: Transformación -->
             <div class="slide slide-2">
-                <h1>Descubre tu Verdadero Propósito</h1>
-                <p>Construye un legado de éxito duradero, recupera tiempo valioso en familia y alcanza un bienestar pleno.</p>
-                <a href="#negocio" class="btn-slide-cta">Conocer Oportunidad</a>
+                <h1>Salud real que se siente por dentro y se nota por fuera.</h1>
+                <p>Fórmulas botánicas diseñadas para resolver el problema desde la raíz, no solo para disfrazar los síntomas.</p>
+                <a href="#tendencia" class="btn-slide-cta">Explorar la tienda</a>
             </div>
         </div>
     </div>
 
-    <!-- TRES PILARES PRINCIPALES -->
+    <!-- 2. TRES PILARES INICIALES (RAZONES DE CONFIANZA Y CULTURA) -->
     <div class="pillars-wrapper">
         <div class="pillars-grid">
             <div class="pillar-card">
-                <h3>🌿 Salud Integral y Prevención</h3>
-                <ul>
-                    <li><strong>Tecnología de la Turmalina:</strong> Emisión de aniones para el equilibrio corporal óptimo.</li>
-                    <li><strong>Arándanos Canadienses:</strong> La mayor concentración natural de antioxidantes.</li>
-                    <li><strong>Bebidas Funcionales:</strong> Mezclas gourmet de café con Ganoderma Lucidum diario.</li>
-                </ul>
+                <h3>🧪 Máxima Absorción Celular</h3>
+                <p>Fórmulas puras procesadas para que tu cuerpo realmente absorba los nutrientes en lugar de desecharlos.</p>
             </div>
             <div class="pillar-card">
-                <h3>🌱 Propósito de Vida</h3>
-                <ul>
-                    <li><strong>Más allá de pagar cuentas:</strong> Un modelo para trascender e impactar positivamente.</li>
-                    <li><strong>Tiempo en Familia:</strong> Libertad de tiempo para quienes realmente te importan.</li>
-                    <li><strong>Construcción de Legado:</strong> Un activo heredable, ético y de consumo masivo.</li>
-                </ul>
+                <h3>🌱 Solución Desde la Raíz</h3>
+                <p>No tapamos síntomas. Nuestros extractos trabajan en desinflamar, detoxificar y equilibrar tu organismo.</p>
             </div>
             <div class="pillar-card">
-                <h3>🤝 Comunidad Activa</h3>
-                <ul>
-                    <li><strong>Acompañamiento Estratégico:</strong> Capacitaciones integrales con Team Elite.</li>
-                    <li><strong>Herramientas Digitales:</strong> Sistema probado de prospección y marketing.</li>
-                    <li><strong>Crecimiento Mutuo:</strong> Un ecosistema dinámico enfocado en el éxito colectivo.</li>
-                </ul>
+                <h3>🛡️ Calidad Certificada & Segura</h3>
+                <p>Respaldado por certificaciones internacionales. Cuidado libre de tóxicos y seguro para toda tu familia.</p>
             </div>
         </div>
     </div>
 
-    <!-- 1. SECCIÓN PRODUCTOS TENDENCIA (ALTA DEMANDA) -->
+    <!-- 3. LISTADO DE PRODUCTOS MÁS SOLICITADOS (6 PRODUCTOS CON COPYS Y BADGES EXACTOS) -->
     <section class="section-block bg-slate-soft glow-bg-section" id="tendencia">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Alta Demanda</span>
                 <h2 class="section-title">Productos Más Solicitados</h2>
-                <p style="color: var(--text-body);">Innovaciones de consumo diario con tecnología aplicada para potenciar tu bienestar.</p>
+                <p style="color: var(--text-body);">Selección especializada formulada para brindar soluciones reales desde la raíz.</p>
             </div>
 
-            <div class="products-grid-4">
-                <!-- 1 -->
+            <div class="products-grid-3">
+                <!-- Producto 1: Toallas de Día -->
                 <div class="product-card">
                     <div>
-                        <span class="product-badge">Cuidado Bucal</span>
-                        <div class="product-img-box">[ Imagen HD Crema Herbs ]</div>
-                        <h4>Crema Dental Herbs</h4>
-                        <p>Extractos herbales selectos que fortalecen y protegen las encías, evitan la acumulación de placa bacteriana y refrescan el aliento sin abrasivos.</p>
+                        <div class="product-img-box">[ Imagen HD Toallas de Día ]</div>
+                        <div class="product-hook">"Dile adiós a la irritación y a la humedad molesta durante tu periodo."</div>
+                        <h4>Toallas de Día</h4>
+                        <p>La mayoría de las toallas sanitarias usan plásticos que atrapan la humedad y alteran tu pH. Diseñadas con algodón 100% puro y una banda de aniones, estas toallas eliminan bacterias y olores de forma natural, garantizando máxima absorción, frescura y protección sin irritar tu piel.</p>
+                        <div class="badges-container">
+                            <span class="badge-pill">Algodón 100% Puro</span>
+                            <span class="badge-pill">Banda de Aniones</span>
+                            <span class="badge-pill">Sin Plástico Rígido</span>
+                        </div>
                     </div>
-                    <a href="https://wa.me/573041222672?text=Solicito%20Crema%20Herbs" class="btn-buy" target="_blank">Pedir por WhatsApp</a>
+                    <a href="https://wa.me/573041222672?text=Solicito%20Toallas%20de%20D%C3%ADa" class="btn-buy" target="_blank">Pedir por WhatsApp</a>
                 </div>
 
-                <!-- 2 -->
+                <!-- Producto 2: Protectores Diarios con Anión -->
                 <div class="product-card">
                     <div>
-                        <span class="product-badge">Microbiota Oral</span>
-                        <div class="product-img-box">[ Imagen HD Crema Probióticos ]</div>
-                        <h4>Crema Dental de Probióticos</h4>
-                        <p>Avanzada fórmula con probióticos activos diseñados para equilibrar la microbiota bucal, proteger el esmalte y combatir el origen de la caries.</p>
-                    </div>
-                    <a href="https://wa.me/573041222672?text=Solicito%20Crema%20Probioticos" class="btn-buy" target="_blank">Pedir por WhatsApp</a>
-                </div>
-
-                <!-- 3 -->
-                <div class="product-card">
-                    <div>
-                        <span class="product-badge">Cuidado Femenino</span>
-                        <div class="product-img-box">[ Imagen HD Toallas Día ]</div>
-                        <h4>Toallas Día con Turmalina</h4>
-                        <p>Anatómicas y respirables, integran una cinta de turmalina emisora de aniones para regular el pH, aliviar molestias y neutralizar olores.</p>
-                    </div>
-                    <a href="https://wa.me/573041222672?text=Solicito%20Toallas%20Dia" class="btn-buy" target="_blank">Pedir por WhatsApp</a>
-                </div>
-
-                <!-- 4 -->
-                <div class="product-card">
-                    <div>
-                        <span class="product-badge">Uso Diario Íntimo</span>
-                        <div class="product-img-box">[ Imagen HD Protectores ]</div>
+                        <div class="product-img-box">[ Imagen HD Protectores Diarios ]</div>
+                        <div class="product-hook">"El problema no es usar protector: es usar protectores de plástico."</div>
                         <h4>Protectores Diarios con Anión</h4>
-                        <p>Protección ultradelgada y totalmente transpirable con tecnología activa de anión para una higiene diaria óptima, libre de irritaciones.</p>
+                        <p>Los comerciales asfixian tu zona íntima y causan infecciones. Con algodón 100% transpirable y cinta de aniones, estos protectores desintoxican la zona, eliminan bacterias y dejan respirar tu piel con total frescura.</p>
+                        <div class="badges-container">
+                            <span class="badge-pill">Algodón Transpirable</span>
+                            <span class="badge-pill">Efecto Aniónico</span>
+                            <span class="badge-pill">Protección Anti-Infecciones</span>
+                        </div>
                     </div>
-                    <a href="https://wa.me/573041222672?text=Solicito%20Protectores" class="btn-buy" target="_blank">Pedir por WhatsApp</a>
+                    <a href="https://wa.me/573041222672?text=Solicito%20Protectores%20Diarios" class="btn-buy" target="_blank">Pedir por WhatsApp</a>
                 </div>
 
-                <!-- 5 -->
+                <!-- Producto 3: Jabón de Turmalina -->
                 <div class="product-card">
                     <div>
-                        <span class="product-badge">Dermatología</span>
-                        <div class="product-img-box">[ Imagen HD Jabón Turmalina ]</div>
+                        <div class="product-img-box">[ Imagen HD Jabón de Turmalina ]</div>
+                        <div class="product-hook">"¿Sabías que un jabón puede quitarte el estrés acumulado y ayudarte a dormir mejor?"</div>
                         <h4>Jabón de Turmalina</h4>
-                        <p>Limpia suavemente mientras estimula la microcirculación cutánea superficial, ayuda a balancear el exceso de grasa y revitaliza los tejidos.</p>
+                        <p>No es solo lavar tu cuerpo: es liberar la carga del día. Los minerales de la turmalina ayudan a relajar la tensión corporal y calmar la fatiga nocturna, preparándote para un descanso verdaderamente reparador mientras dejan tu piel completamente limpia y libre de impurezas.</p>
+                        <div class="badges-container">
+                            <span class="badge-pill">Libera Estrés</span>
+                            <span class="badge-pill">Prepara el Descanso</span>
+                            <span class="badge-pill">Limpieza Mineral</span>
+                        </div>
                     </div>
-                    <a href="https://wa.me/573041222672?text=Solicito%20Jabon%20Turmalina" class="btn-buy" target="_blank">Pedir por WhatsApp</a>
+                    <a href="https://wa.me/573041222672?text=Solicito%20Jab%C3%B3n%20de%20Turmalina" class="btn-buy" target="_blank">Pedir por WhatsApp</a>
                 </div>
 
-                <!-- 6 -->
+                <!-- Producto 4: BlueBerry Candy -->
                 <div class="product-card">
                     <div>
-                        <span class="product-badge">Antioxidante Familiar</span>
                         <div class="product-img-box">[ Imagen HD BlueBerry Candy ]</div>
+                        <div class="product-hook">"¿Sufres de vista cansada por las pantallas?"</div>
                         <h4>BlueBerry Candy</h4>
-                        <p>Deliciosos caramelos funcionales enriquecidos con extracto concentrado de arándanos silvestres, ricos en fitonutrientes activos.</p>
+                        <p>El ardor y la resequedad ocular son causados por la luz azul. Con extracto concentrado de arándano, estos caramelos protegen tu retina, alivian la fatiga visual y cuidan tu vista de forma deliciosa.</p>
+                        <div class="badges-container">
+                            <span class="badge-pill">Escudo Luz Azul</span>
+                            <span class="badge-pill">Alivia la Fatiga Ocular</span>
+                            <span class="badge-pill">Antioxidante Natural</span>
+                        </div>
                     </div>
                     <a href="https://wa.me/573041222672?text=Solicito%20BlueBerry%20Candy" class="btn-buy" target="_blank">Pedir por WhatsApp</a>
                 </div>
 
-                <!-- 7 -->
+                <!-- Producto 5: Lactiberry -->
                 <div class="product-card">
                     <div>
-                        <span class="product-badge">Digestión e Inmunidad</span>
                         <div class="product-img-box">[ Imagen HD Lactiberry ]</div>
+                        <div class="product-hook">"Protege tu digestión y tus vías urinarias en una sola toma."</div>
                         <h4>Lactiberry</h4>
-                        <p>Fórmula simbiótica de arándanos y bacterias ácido-lácticas benéficas, ideal para repoblar la flora digestiva y apoyar defensas.</p>
+                        <p>Refuerza tus defensas de forma natural. Su combinación de arándanos, producto lácteo protector y té negro aporta antioxidantes y cultivos que equilibran tu intestino, mejoran la digestión y previenen molestias urinarias.</p>
+                        <div class="badges-container">
+                            <span class="badge-pill">Protección Urinaria</span>
+                            <span class="badge-pill">Té Negro y Arándanos</span>
+                            <span class="badge-pill">Equilibrio Digestivo</span>
+                        </div>
                     </div>
                     <a href="https://wa.me/573041222672?text=Solicito%20Lactiberry" class="btn-buy" target="_blank">Pedir por WhatsApp</a>
                 </div>
 
-                <!-- 8 -->
+                <!-- Producto 6: Plantillas de Turmalina -->
                 <div class="product-card">
                     <div>
-                        <span class="product-badge">Ortopedia y Circulación</span>
-                        <div class="product-img-box">[ Imagen HD Plantillas Turmalina ]</div>
+                        <div class="product-img-box">[ Imagen HD Plantillas de Turmalina ]</div>
+                        <div class="product-hook">"Camina sin dolor y olvídate de las piernas pesadas."</div>
                         <h4>Plantillas de Turmalina</h4>
-                        <p>Diseño ergonómico con puntos de presión y microemisión de aniones para estimular la circulación plantar y aliviar el cansancio muscular.</p>
+                        <p>Estar de pie todo el día no tiene por qué agotar tu cuerpo. Con nódulos de turmalina que estimulan la microcirculación y dan un masaje acupresor en cada paso, estas plantillas desinflaman, alivian el cansancio y devuelven la ligereza a tus pies.</p>
+                        <div class="badges-container">
+                            <span class="badge-pill">Acupresión Mineral</span>
+                            <span class="badge-pill">Mejora la Circulación</span>
+                            <span class="badge-pill">Alivio de Fatiga</span>
+                        </div>
                     </div>
-                    <a href="https://wa.me/573041222672?text=Solicito%20Plantillas%20Turmalina" class="btn-buy" target="_blank">Pedir por WhatsApp</a>
+                    <a href="https://wa.me/573041222672?text=Solicito%20Plantillas%20de%20Turmalina" class="btn-buy" target="_blank">Pedir por WhatsApp</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 2. SECCIÓN SALUD PREVENTIVA Y CIENCIA -->
+    <!-- SECCIÓN SALUD PREVENTIVA Y CIENCIA -->
     <section class="section-block bg-emerald-soft" id="prevencion">
         <div class="container">
             <div class="section-header">
@@ -1170,7 +1169,6 @@
             </div>
 
             <div class="science-grid">
-                <!-- Bloque 1: Turmalina -->
                 <div class="science-card">
                     <div class="img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&w=800&q=80');">
                         <div class="img-overlay-science">Biotecnología Celular</div>
@@ -1181,7 +1179,6 @@
                     </div>
                 </div>
 
-                <!-- Bloque 2: Arándano Azul -->
                 <div class="science-card">
                     <div class="img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1498557850523-fd3d118b962e?auto=format&fit=crop&w=800&q=80');">
                         <div class="img-overlay-science">Antioxidantes Activos</div>
@@ -1192,7 +1189,6 @@
                     </div>
                 </div>
 
-                <!-- Bloque 3: Bebidas Funcionales -->
                 <div class="science-card">
                     <div class="img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80');">
                         <div class="img-overlay-science">Nanotecnología de Consumo</div>
@@ -1206,7 +1202,7 @@
         </div>
     </section>
 
-    <!-- 3. HISTORIAS DE TRANSFORMACIÓN (VIDEOS REELS/SHORTS) -->
+    <!-- HISTORIAS DE TRANSFORMACIÓN (VIDEOS REELS/SHORTS) -->
     <section class="section-block bg-white glow-bg-section" id="testimonios">
         <div class="container">
             <div class="section-header">
@@ -1216,7 +1212,6 @@
             </div>
 
             <div class="video-grid-3">
-                <!-- Video 1 -->
                 <div class="video-card-vertical">
                     <div class="video-overlay-details">
                         <div class="play-btn">▶</div>
@@ -1225,7 +1220,6 @@
                     </div>
                 </div>
 
-                <!-- Video 2 -->
                 <div class="video-card-vertical">
                     <div class="video-overlay-details">
                         <div class="play-btn">▶</div>
@@ -1234,7 +1228,6 @@
                     </div>
                 </div>
 
-                <!-- Video 3 -->
                 <div class="video-card-vertical">
                     <div class="video-overlay-details">
                         <div class="play-btn">▶</div>
@@ -1246,7 +1239,7 @@
         </div>
     </section>
 
-    <!-- 4. SECCIÓN COMBOS RECOMENDADOS -->
+    <!-- SECCIÓN COMBOS RECOMENDADOS -->
     <section class="section-block bg-yellow-soft" id="combos">
         <div class="container">
             <div class="section-header">
@@ -1255,34 +1248,31 @@
                 <p style="color: var(--text-body);">Sinergias integrales de productos con descuento para un abordaje completo y un óptimo ahorro familiar.</p>
             </div>
 
-            <div class="products-grid-4" style="max-width: 1000px; margin: 0 auto;">
-                <!-- Combo 1 -->
+            <div class="products-grid-3" style="max-width: 1000px; margin: 0 auto;">
                 <div class="product-card">
                     <div>
-                        <span class="product-badge">Salud Femenina</span>
                         <div class="product-img-box">[ Combo Salud Femenina HD ]</div>
+                        <div class="product-hook">"Protección menstrual integral e higiénica"</div>
                         <h4>Combo Salud Femenina</h4>
                         <p>Incluye Toallas Día, Protectores Diarios y Jabón de Turmalina. Diseñado para un cuidado menstrual fisiológico y libre de componentes sintéticos.</p>
                     </div>
                     <a href="https://wa.me/573041222672?text=Solicito%20Combo%20Salud%20Femenina" class="btn-buy" target="_blank">Pedir Combo por WhatsApp</a>
                 </div>
 
-                <!-- Combo 2 -->
                 <div class="product-card">
                     <div>
-                        <span class="product-badge">Rendimiento</span>
                         <div class="product-img-box">[ Combo Energía Diaria HD ]</div>
+                        <div class="product-hook">"Rendimiento físico y mental diario"</div>
                         <h4>Combo Energía Diaria</h4>
                         <p>Incluye Berry Coffee y caramelos BlueBerry Candy. Energía constante y de liberación natural sin efectos estimulantes secundarios sobre el sistema nervioso.</p>
                     </div>
                     <a href="https://wa.me/573041222672?text=Solicito%20Combo%20Energia%20Diaria" class="btn-buy" target="_blank">Pedir Combo por WhatsApp</a>
                 </div>
 
-                <!-- Combo 3 -->
                 <div class="product-card">
                     <div>
-                        <span class="product-badge">Inmunológico</span>
                         <div class="product-img-box">[ Combo Refuerzo Defensas HD ]</div>
+                        <div class="product-hook">"Fortalece tu flora y sistema inmune"</div>
                         <h4>Combo Refuerzo Defensas</h4>
                         <p>Combina Ganoderma Coffee de alta pureza con Lactiberry. Equilibra la microbiota intestinal promoviendo una barrera inmunológica vigorosa.</p>
                     </div>
@@ -1292,7 +1282,7 @@
         </div>
     </section>
 
-    <!-- 5. SECCIÓN CATEGORÍAS PRINCIPALES -->
+    <!-- SECCIÓN CATEGORÍAS PRINCIPALES -->
     <section class="section-block bg-green-soft" id="categorias">
         <div class="container">
             <div class="section-header">
@@ -1326,7 +1316,7 @@
         </div>
     </section>
 
-    <!-- 6. SECCIÓN LO NUEVO -->
+    <!-- SECCIÓN LO NUEVO -->
     <section class="section-block bg-indigo-soft" id="nuevos">
         <div class="container">
             <div class="section-header">
@@ -1335,47 +1325,33 @@
                 <p style="color: var(--text-body);">Explora nuestros lanzamientos más recientes y descubre los desarrollos biotecnológicos en camino.</p>
             </div>
 
-            <div class="products-grid-4">
-                <!-- Producto Real -->
+            <div class="products-grid-3">
                 <div class="product-card">
                     <div>
-                        <span class="product-badge">¡Nuevo!</span>
                         <div class="product-img-box">[ Imagen HD Nuevo Candy ]</div>
+                        <div class="product-hook">"Fórmula mejorada antioxidante"</div>
                         <h4>Nuevos Candy de Arándanos</h4>
                         <p>Formulación de caramelos funcionales mejorada con mayor concentración de antocianinas y un práctico envase de dosificación.</p>
                     </div>
                     <a href="https://wa.me/573041222672?text=Consultar%20Nuevos%20Candy" class="btn-buy" target="_blank">Consultar por WhatsApp</a>
                 </div>
 
-                <!-- Slot Próximamente 1 -->
                 <div class="product-card" style="background: rgba(255, 255, 255, 0.7); opacity: 0.9;">
                     <div>
-                        <span class="product-badge" style="background: var(--bg-secondary); color: var(--text-title);">Desarrollo</span>
                         <div class="product-img-box" style="border-style: dotted;">Próximo Lanzamiento 2026</div>
+                        <div class="product-hook">"Innovación biotecnológica"</div>
                         <h4>Lanzamiento HGW en camino</h4>
                         <p>Espacio reservado para las innovaciones biotecnológicas en fase avanzada de registro sanitario en Colombia.</p>
                     </div>
                     <a href="https://wa.me/573041222672?text=Consultar%20Lanzamientos" class="btn-secondary" target="_blank">Saber Más por WhatsApp</a>
                 </div>
 
-                <!-- Slot Próximamente 2 -->
                 <div class="product-card" style="background: rgba(255, 255, 255, 0.7); opacity: 0.9;">
                     <div>
-                        <span class="product-badge" style="background: var(--bg-secondary); color: var(--text-title);">Desarrollo</span>
                         <div class="product-img-box" style="border-style: dotted;">Próximo Lanzamiento 2026</div>
+                        <div class="product-hook">"Soporte cognitivo celular"</div>
                         <h4>Lanzamiento HGW en camino</h4>
                         <p>Nuevas líneas de suplementación avanzada para el rendimiento diario y apoyo cognitivo.</p>
-                    </div>
-                    <a href="https://wa.me/573041222672?text=Consultar%20Lanzamientos" class="btn-secondary" target="_blank">Saber Más por WhatsApp</a>
-                </div>
-
-                <!-- Slot Próximamente 3 -->
-                <div class="product-card" style="background: rgba(255, 255, 255, 0.7); opacity: 0.9;">
-                    <div>
-                        <span class="product-badge" style="background: var(--bg-secondary); color: var(--text-title);">Desarrollo</span>
-                        <div class="product-img-box" style="border-style: dotted;">Próximo Lanzamiento 2026</div>
-                        <h4>Lanzamiento HGW en camino</h4>
-                        <p>Dispositivos de bienestar avanzados basados en la emisión fisiológica de iones y soporte estructural.</p>
                     </div>
                     <a href="https://wa.me/573041222672?text=Consultar%20Lanzamientos" class="btn-secondary" target="_blank">Saber Más por WhatsApp</a>
                 </div>
@@ -1383,7 +1359,7 @@
         </div>
     </section>
 
-    <!-- 7. SECCIÓN OPORTUNIDAD CON ENFOQUE DE PROPÓSITO -->
+    <!-- SECCIÓN OPORTUNIDAD CON ENFOQUE DE PROPÓSITO -->
     <section class="section-block bg-slate-soft" id="negocio">
         <div class="container">
             <div class="business-wrapper">
@@ -1393,19 +1369,16 @@
                 </div>
 
                 <div class="purpose-grid">
-                    <!-- Pilar 1 -->
                     <div class="purpose-card">
                         <div class="icon">👨‍👩‍👧‍👦</div>
                         <h4>Tiempo en Familia</h4>
                         <p>Recupera horas de incalculable valor y sé el protagonista de la vida de tus hijos y seres queridos, no un espectador ausente.</p>
                     </div>
-                    <!-- Pilar 2 -->
                     <div class="purpose-card">
                         <div class="icon">🌿</div>
                         <h4>Salud Integral</h4>
                         <p>La riqueza económica sin salud carece de sentido. Priorizamos la vitalidad celular y mental como las bases de tu éxito.</p>
                     </div>
-                    <!-- Pilar 3 -->
                     <div class="purpose-card">
                         <div class="icon">🏛</div>
                         <h4>Un Legado Real</h4>
@@ -1422,7 +1395,7 @@
         </div>
     </section>
 
-    <!-- 8. SECCIÓN DE CIERRE Y AJUSTE DE VIDA -->
+    <!-- SECCIÓN DE CIERRE Y AJUSTE DE VIDA -->
     <section class="section-block bg-white glow-bg-section" id="cierre">
         <div class="container">
             <div class="closing-wrapper">
@@ -1432,17 +1405,14 @@
                 </p>
 
                 <div class="pillars-3-health">
-                    <!-- Salud 1 -->
                     <div class="health-card">
                         <h4>🙏 Salud Espiritual</h4>
                         <p>Vivir en plena coherencia con tus valores morales primordiales, desarrollando claridad mental y un claro sentido de contribución humana.</p>
                     </div>
-                    <!-- Salud 2 -->
                     <div class="health-card">
                         <h4>🧠 Salud Física y Mental</h4>
                         <p>Nutrir tus células con prevención activa, regulando de forma natural el estrés diario para un estado de energía vibrante.</p>
                     </div>
-                    <!-- Salud 3 -->
                     <div class="health-card">
                         <h4>📈 Salud Financiera</h4>
                         <p>Edificar la tranquilidad y prosperidad económica a mediano y largo plazo mediante un sistema sostenible, heredable y equitativo.</p>
@@ -1460,7 +1430,7 @@
         </a>
     </div>
 
-    <!-- POP-UP EXIT INTENT CON CAPTURA DE BASE DE DATOS -->
+    <!-- POP-UP EXIT INTENT CON CAPTURA DE BASE DE DATOS (3 CAMPOS SOLICITADOS) -->
     <div class="modal-overlay" id="exitModal">
         <div class="modal-box">
             <span class="modal-close" id="closeModal">&times;</span>
@@ -1488,7 +1458,7 @@
                 ¡Registro completado con éxito! Redirigiéndote a WhatsApp...
             </div>
         </div>
-    </div
+    </div>
 
     <!-- FOOTER -->
     <footer>
